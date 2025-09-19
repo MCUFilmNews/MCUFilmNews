@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCU Film News</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      text-align: center;
+      position: relative;
+    }
+
+    a {
+      color: #ff5252;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    a:hover {
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    a:visited {
+      color: #ff5252;
+    }
+
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #bbb;
+    }
+
+    .header-line {
+      height: 4px;
+      background-color: #ff5252;
+      width: 80px;
+      margin: 15px auto 0 auto;
+      border-radius: 2px;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 20px auto 40px auto;
+      font-size: 1.05rem;
+      color: #ccc;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .social-icons img {
+      vertical-align: middle;
+      margin: 0 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      padding: 20px;
+      text-align: left;
+      background: linear-gradient(to bottom, #111 0%, #1a1a1a 100%);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    main::before {
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: url('MCU Film News/Images/faint-bg.png') no-repeat center center;
+      opacity:0.05;
+      z-index:0;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      border-left: 4px solid #ff5252;
+      padding-left: 10px;
+      margin-top: 40px;
+      color: #fff;
+      font-size: 1.5rem;
+      opacity:0;
+      transform: translateX(-30px);
+      animation: slideIn 0.5s forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity:1;
+        transform: translateX(0);
+      }
+    }
+
+    .section-icon {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      background-color: #ff5252;
+      border-radius: 50%;
+      color: #111;
+      font-weight: bold;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 12px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s, background-color 0.2s;
+      position: relative;
+      z-index:1;
+    }
+
+    .card:hover {
+      background-color: #222;
+      transform: scale(1.02);
+    }
+
+    .card a {
+      font-size: 1.2rem;
+    }
+
+    .badge {
+      background:#ff5252;
+      color:#111;
+      padding:2px 6px;
+      border-radius:4px;
+      font-size:0.8rem;
+      margin-left: 6px;
+    }
+
+    .section-divider {
+      border: 1px solid #222;
+      margin: 20px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #aaa;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>MCU FILM NEWS</h1>
+    <div class="header-line"></div>
+    <p class="intro">
+      Your fan-made hub for all upcoming Marvel movies, Disney+ series, and animated projects.!
+    </p>
+
+    <div class="social-icons">
+      <a href="https://x.com/MCUFilmNews" target="_blank">
+        <img src="images/twitter-logo.png" alt="Twitter Logo">
+      </a>
+      <a href="https://www.threads.com/@mcufilmnews" target="_blank">
+        <img src="images/threads-logo.png" alt="Threads Logo">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <h2><span class="section-icon">🎬</span> Upcoming Movies</h2>
+    <div class="card">
+      <p><strong>Dec 18, 2026:</strong> <a href="avengers-doomsday.html">Avengers: Doomsday</a></p>
+    </div>
+    <div class="card">
+      <p><strong>July 31, 2026:</strong> <a href="spider-man-brandnewday.html">Spider-Man: Brand New Day</a></p>
+    </div>
+    <div class="card">
+      <p><strong>Dec 17, 2027:</strong> <a href="avengers-secretwars.html">Avengers: Secret Wars</a></p>
+    </div>
+    <div class="card">
+      <p><strong>TBD:</strong> <a href="blade.html">Blade</a></p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <h2><span class="section-icon">📺</span> Upcoming Disney+ Series</h2>
+    <div class="card">
+      <p><strong>Dec 2025:</strong> <a href="wonder-man.html">Wonder Man</a></p>
+    </div>
+    <div class="card">
+      <p><strong>2025:</strong> <a href="daredevil-bornagain2.html">Daredevil: Born Again</a></p>
+    </div>
+    <div class="card">
+      <p><strong>2026:</strong> <a href="vision-quest.html">Vision Quest</a></p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <h2><span class="section-icon">🎨</span> Upcoming Animated Projects</h2>
+    <div class="card">
+      <p><strong>Sept 24, 2025:</strong> <a href="marvel-zombies.html">Marvel Zombies (Animated Series)</a></p>
+    </div>
+    <div class="card">
+      <p><strong>2026:</strong> <a href="friendlyspider-man-s2.html">Your Friendly Neighborhood Spider-Man — Season 2</a></p>
+    </div>
+    <div class="card">
+      <p><strong>2026:</strong> <a href="xmen97-s2.html">X-Men ’97 — Season 2</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 MCUFilmNews | Fan-made site, not affiliated with Marvel Studios</p>
+  </footer>
+</body>
+</html>
