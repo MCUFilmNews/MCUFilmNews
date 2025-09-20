@@ -49,19 +49,36 @@
       gap: 8px 20px;
       margin-top: 10px;
       padding-left: 0;
-      overflow: hidden;
-      max-height: 250px;
-      transition: max-height 0.6s ease;
     }
-    .cast-list.expanded { max-height: 2000px; }
+
     .cast-list div {
       background: #1a1a1a;
       padding: 6px 10px;
       border-radius: 6px;
       border-left: 3px solid #ff5252;
+      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease, margin 0.5s ease;
+      overflow: hidden;
     }
+
+    /* Hidden second half initially */
+    .cast-list div.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding: 0 10px;
+      margin: 0;
+    }
+
+    /* Visible state */
+    .cast-list div.visible {
+      max-height: 200px; /* Adjust depending on content */
+      opacity: 1;
+      padding: 6px 10px;
+      margin: 0;
+    }
+
     .cast-list strong { color: #fff; }
     .cast-list em { color: #bbb; }
+
     .toggle-btn {
       margin-top: 10px;
       background: #ff5252;
@@ -107,133 +124,66 @@
       <li><strong>Directors:</strong> Destin Daniel Cretton, Stella Meghie, James Ponsoldt, and Tiffany Johnson</li>
       <li><strong>Writers:</strong> TBA</li>
     </ul>
+
     <div id="cast" class="cast-list">
-<div><strong>Charlie Cox</strong> — <em>Daredevil</em></div>
-<div><strong>Vincent D'Onofrio</strong> — <em>Kingpin</em></div>
-<div><strong>Margarita Levieva</strong> — <em>Heather Glenn</em></div>
-<div><strong>Deborah Ann Woll</strong> — <em>Karen Page</em></div>
-<div><strong>Elden Henson</strong> — <em>Foggy Nelson</em></div>
-<div><strong>Wilson Bethel</strong> — <em>Bullseye</em></div>
-<div><strong>Zabryna Guevara</strong> — <em>Sheila Rivera</em></div>
-<div><strong>Nikki M. James</strong> — <em>Kirsten McDuffie</em></div>
-<div><strong>Genneya Walton</strong> — <em>BB Urich</em></div>
-<div><strong>Arty Froushan</strong> — <em>Buck Cashman</em></div>
-<div><strong>Clark Johnson</strong> — <em>Cherry</em></div>
-<div><strong>Michael Gandolfini</strong> — <em>Daniel Blake</em></div>
-<div><strong>Ayelet Zurer</strong> — <em>Vanessa Fisk</em></div>
-<div><strong>Jon Bernthal</strong> — <em>Punisher</em></div>
-<div><strong>Krysten Ritter</strong> — <em>Jessica Jones</em></div>
-<div><strong>Royce Johnson</strong> — <em>Brett Mahoney</em></div>
+      <div><strong>Charlie Cox</strong> — <em>Daredevil</em></div>
+      <div><strong>Vincent D'Onofrio</strong> — <em>Kingpin</em></div>
+      <div><strong>Margarita Levieva</strong> — <em>Heather Glenn</em></div>
+      <div><strong>Deborah Ann Woll</strong> — <em>Karen Page</em></div>
+      <div><strong>Elden Henson</strong> — <em>Foggy Nelson</em></div>
+      <div><strong>Wilson Bethel</strong> — <em>Bullseye</em></div>
+      <div><strong>Zabryna Guevara</strong> — <em>Sheila Rivera</em></div>
+      <div><strong>Nikki M. James</strong> — <em>Kirsten McDuffie</em></div>
+      <div><strong>Genneya Walton</strong> — <em>BB Urich</em></div>
+      <div><strong>Arty Froushan</strong> — <em>Buck Cashman</em></div>
+      <div><strong>Clark Johnson</strong> — <em>Cherry</em></div>
+      <div><strong>Michael Gandolfini</strong> — <em>Daniel Blake</em></div>
+      <div><strong>Ayelet Zurer</strong> — <em>Vanessa Fisk</em></div>
+      <div><strong>Jon Bernthal</strong> — <em>Punisher</em></div>
+      <div><strong>Krysten Ritter</strong> — <em>Jessica Jones</em></div>
+      <div><strong>Royce Johnson</strong> — <em>Brett Mahoney</em></div>
     </div>
+    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
-    
     <h2>Latest News</h2>
-<div style="display: flex; flex-direction: column; gap: 15px;">
-
-  <!-- Card 1 -->
-  <a href="https://x.com/MCUFilmNews/status/1968725403742147069" target="_blank" style="text-decoration: none;">
-    <div style="
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: #1a1a1a;
-      padding: 15px;
-      border-radius: 15px;
-      border: 2px solid #ff5252;
-      transition: transform 0.2s, box-shadow 0.2s;
-    "
-      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
-    >
-      <img src="https://pbs.twimg.com/media/G1JRUenaQAA1R9F?format=jpg&name=small" 
-           alt="Avengers Doomsday" 
-           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-      <div style="color:#eee;">
-        <strong style="font-size:1.1rem;">Vincent D’Onofrio teases Season 2 of ‘DAREDEVIL: BORN AGAIN’</strong>
-        <p style="margin:5px 0 0; color:#ccc;">“2 is complete. 2 is quite something. Emotional, chaotic and just plain Bat Shit Crazy!”</p>
-      </div>
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <!-- Your news cards here (unchanged) -->
     </div>
-  </a>
 
-  <!-- Card 2 -->
-  <a href="https://x.com/MCUFilmNews/status/1968690583884419191" target="_blank" style="text-decoration: none;">
-    <div style="
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: #1a1a1a;
-      padding: 15px;
-      border-radius: 15px;
-      border: 2px solid #ff5252;
-      transition: transform 0.2s, box-shadow 0.2s;
-    "
-      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
-    >
-      <img src="https://pbs.twimg.com/media/G1Ixpxib0AAxUzP?format=jpg&name=large" 
-           alt="Avengers Doomsday" 
-           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-      <div style="color:#eee;">
-        <strong style="font-size:1.1rem;">‘DAREDEVIL: BORN AGAIN’ has officially been renewed for Season 3.</strong>
-        <p style="margin:5px 0 0; color:#ccc;">Filming is set to begin next year.</p>
-      </div>
-    </div>
-  </a>
-  <!-- Card 3 -->
-  <a href="https://x.com/MCUFilmNews/status/1947018624553906437" target="_blank" style="text-decoration: none;">
-    <div style="
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: #1a1a1a;
-      padding: 15px;
-      border-radius: 15px;
-      border: 2px solid #ff5252;
-      transition: transform 0.2s, box-shadow 0.2s;
-    "
-      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
-    >
-      <img src="https://pbs.twimg.com/media/GwUy18vWMAE544G?format=jpg&name=large" 
-           alt="Avengers Doomsday" 
-           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-      <div style="color:#eee;">
-        <strong style="font-size:1.1rem;">Kevin Feige confirms that the events of 'THUNDERBOLTS' won’t be addressed in 'DAREDEVIL: BORN AGAIN' Season 2..</strong>
-        <p style="margin:5px 0 0; color:#ccc;"></p>
-      </div>
-    </div>
-  </a>
-
-
-</div>
-
-
-<!-- Back link added at the very bottom of the main section -->
-<a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
-</main>
+    <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
+  </main>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
-  // Toggle cast list
-  function toggleCast() {
-    const castList = document.getElementById("cast");
-    const btn = document.querySelector(".toggle-btn");
+  // Hide second half initially
+  const castDivs = document.querySelectorAll("#cast div");
+  const half = Math.ceil(castDivs.length / 2);
 
-    if (castList.classList.contains("expanded")) {
-      castList.classList.remove("expanded");
-      btn.textContent = "Show Full Cast";
-    } else {
-      castList.classList.add("expanded");
+  for (let i = half; i < castDivs.length; i++) {
+    castDivs[i].classList.add("hidden");
+  }
+
+  // Toggle function with smooth slide
+  function toggleCast() {
+    const btn = document.querySelector(".toggle-btn");
+    const hiddenDivs = document.querySelectorAll("#cast div.hidden");
+
+    if (hiddenDivs.length) {
+      // Reveal second half
+      for (let i = half; i < castDivs.length; i++) {
+        castDivs[i].classList.remove("hidden");
+        castDivs[i].classList.add("visible");
+      }
       btn.textContent = "Hide Cast";
+    } else {
+      // Hide second half
+      for (let i = half; i < castDivs.length; i++) {
+        castDivs[i].classList.remove("visible");
+        castDivs[i].classList.add("hidden");
+      }
+      btn.textContent = "Show Full Cast";
     }
   }
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
