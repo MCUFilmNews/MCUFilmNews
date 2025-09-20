@@ -3,42 +3,228 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Daredevil: Born Again — MCU FILM NEWS</title>
+  <title>Daredevil: Born Again Season 2 — MCU FILM NEWS</title>
   <style>
-    body {font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#111;color:#eee;margin:0;padding:20px;line-height:1.6;}
-    header{text-align:center;margin-top:20px;}
-    header h1{font-size:3rem;font-weight:800;letter-spacing:3px;margin:0;text-transform:uppercase;}
-    .meta{color:#bbb;margin-top:10px;font-size:1rem;}
-    main{max-width:900px;margin:30px auto;}
-    h2{border-left:4px solid #ff5252;padding-left:10px;color:#fff;margin-top:20px;}
-    a{color:#ff5252;text-decoration:none;}
-    a:hover{text-decoration:underline;}
-    .back{margin-top:30px;display:block;}
-    footer{text-align:center;color:#888;margin-top:40px;border-top:1px solid #222;padding-top:15px;}
-    .watermark{position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#444;}
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    header { text-align:center; margin-top:20px; }
+    header h1 {
+      font-size: 3rem;         
+      font-weight: 800;
+      letter-spacing: 3px;     
+      margin: 0;
+      text-transform: uppercase; 
+    }
+    .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
+    #countdown {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5252;
+    }
+    main { max-width:900px; margin:30px auto; }
+    h2 { border-left:4px solid #ff5252; padding-left:10px; color:#fff; margin-top:20px; }
+    a { color:#ff5252; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .back { margin-top:30px; display:block; }
+    footer { text-align:center; color:#888; margin-top:40px; border-top:1px solid #222; padding-top:15px; }
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: #444;
+    }
+
+    /* cast grid */
+    .cast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 20px;
+      margin-top: 10px;
+      padding-left: 0;
+      overflow: hidden;
+      max-height: 250px;
+      transition: max-height 0.6s ease;
+    }
+    .cast-list.expanded { max-height: 2000px; }
+    .cast-list div {
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid #ff5252;
+    }
+    .cast-list strong { color: #fff; }
+    .cast-list em { color: #bbb; }
+    .toggle-btn {
+      margin-top: 10px;
+      background: #ff5252;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .toggle-btn:hover { background: #e04444; }
+
+    /* scrollable Twitter feed for multiple tweets */
+    .twitter-container {
+      max-height: 600px;
+      overflow-y: auto;
+      border: 2px solid #222;
+      border-radius: 8px;
+      padding: 5px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Daredevil: Born Again</h1>
-    <div class="meta">Release Date: 2025</div>
+    <h1>Daredevil: Born Again Season 2</h1>
+    <div class="meta">Release Date: March 2026</div>
+    <div id="countdown"></div>
   </header>
+
   <main>
-    <h2>About</h2>
-    <p><em>Daredevil: Born Again</em> brings Matt Murdock back to the MCU spotlight with his own Disney+ series. (Add synopsis here.)</p>
+    <h2>Synopsis</h2>
+    <p>TBA</p>
+    
     <h2>Cast & Crew</h2>
     <ul>
-      <li>Director: TBD</li>
-      <li>Cast: Charlie Cox (Matt Murdock), Vincent D’Onofrio (Kingpin), others TBD</li>
+      <li><strong>Showrunner:</strong> Andrew Guest</li>
+      <li><strong>Directors:</strong> Destin Daniel Cretton, Stella Meghie, James Ponsoldt, and Tiffany Johnson</li>
+      <li><strong>Writers:</strong> TBA</li>
     </ul>
+    <div id="cast" class="cast-list">
+      <div><strong>Charlie Cox</strong> — <em>Matt Murdock/Daredevil</em></div>
+<div><strong>Vincent D'Onofrio</strong> — <em>Wilson Fisk/Kingpin</em></div>
+<div><strong>Margarita Levieva</strong> — <em>Heather Glenn</em></div>
+<div><strong>Deborah Ann Woll</strong> — <em>Karen Page</em></div>
+<div><strong>Elden Henson</strong> — <em>Foggy Nelson</em></div>
+<div><strong>Wilson Bethel</strong> — <em>Benjamin Poindexter/Bullseye</em></div>
+<div><strong>Zabryna Guevara</strong> — <em>Sheila Rivera</em></div>
+<div><strong>Nikki M. James</strong> — <em>Kirsten McDuffie</em></div>
+<div><strong>Genneya Walton</strong> — <em>BB Urich</em></div>
+<div><strong>Arty Froushan</strong> — <em>Buck Cashman</em></div>
+<div><strong>Clark Johnson</strong> — <em>Cherry</em></div>
+<div><strong>Michael Gandolfini</strong> — <em>Daniel Blake</em></div>
+<div><strong>Ayelet Zurer</strong> — <em>Vanessa Fisk</em></div>
+<div><strong>Jon Bernthal</strong> — <em>Frank Castle/Punisher</em></div>
+<div><strong>Krysten Ritter</strong> — <em>Jessica Jones</em></div>
+<div><strong>Royce Johnson</strong> — <em>Brett Mahoney</em></div>
+    </div>
     <h2>Latest News</h2>
-    <p>Set photos, trailers, and official announcements will be added here.</p>
-<a href="../index.html">⬅ Back to MCU FILM NEWS</a>
-  </main>
-  <footer>
-    <p>© 2025 Fan-made site, not affiliated with Marvel Studios</p>
-  </footer>
-  <div class="watermark">MCU FILM NEWS</div>
+<div style="display: flex; flex-direction: column; gap: 15px;">
+
+  <!-- Card 1 -->
+  <a href="https://x.com/MCUFilmNews/status/1968725403742147069" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/G1JRUenaQAA1R9F?format=jpg&name=small" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">Vincent D’Onofrio teases Season 2 of ‘DAREDEVIL: BORN AGAIN’</strong>
+        <p style="margin:5px 0 0; color:#ccc;">“2 is complete. 2 is quite something. Emotional, chaotic and just plain Bat Shit Crazy!”</p>
+      </div>
+    </div>
+  </a>
+
+  <!-- Card 2 -->
+  <a href="https://x.com/MCUFilmNews/status/1968690583884419191" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/G1Ixpxib0AAxUzP?format=jpg&name=large" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">‘DAREDEVIL: BORN AGAIN’ has officially been renewed for Season 3.</strong>
+        <p style="margin:5px 0 0; color:#ccc;">Filming is set to begin next year.</p>
+      </div>
+    </div>
+  </a>
+  <!-- Card 3 -->
+  <a href="https://x.com/MCUFilmNews/status/1947018624553906437" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/GwUy18vWMAE544G?format=jpg&name=large" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">Kevin Feige confirms that the events of 'THUNDERBOLTS' won’t be addressed in 'DAREDEVIL: BORN AGAIN' Season 2..</strong>
+        <p style="margin:5px 0 0; color:#ccc;"></p>
+      </div>
+    </div>
+  </a>
+
+
+</div>
+
+
+<!-- Back link added at the very bottom of the main section -->
+<a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
+</main>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  // Toggle cast list
+  function toggleCast() {
+    const castList = document.getElementById("cast");
+    const btn = document.querySelector(".toggle-btn");
+
+    if (castList.classList.contains("expanded")) {
+      castList.classList.remove("expanded");
+      btn.textContent = "Show Full Cast";
+    } else {
+      castList.classList.add("expanded");
+      btn.textContent = "Hide Cast";
+    }
+  }
+</script>
 </body>
 </html>
-
