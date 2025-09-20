@@ -15,11 +15,11 @@
     }
     header { text-align:center; margin-top:20px; }
     header h1 {
-      font-size: 3rem;         /* same as homepage */
+      font-size: 3rem;         
       font-weight: 800;
-      letter-spacing: 3px;     /* wide spacing */
+      letter-spacing: 3px;     
       margin: 0;
-      text-transform: uppercase; /* make it ALL CAPS */
+      text-transform: uppercase; 
     }
     .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
     #countdown {
@@ -42,6 +42,22 @@
       font-size: 0.8rem;
       color: #444;
     }
+    /* cast grid */
+    .cast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 20px;
+      margin-top: 10px;
+      padding-left: 0;
+    }
+    .cast-list div {
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid #ff5252;
+    }
+    .cast-list strong { color: #fff; }
+    .cast-list em { color: #bbb; }
   </style>
 </head>
 <body>
@@ -54,12 +70,44 @@
   <main>
     <h2>Synopsis</h2>
     <p>Doctor Doom has officially arrived in the MCU. This villain, a master of cutting-edge science and powerful magic, will unleash a cascading crisis across the entire multiverse.</p>
+    
     <h2>Cast & Crew</h2>
     <ul>
-      <li>Director: The Russo Brothers</li>
-      <li>Writers: Stephen McFeely and Michael Waldron</li>
-      <li>Cast: TBD</li>
+      <li><strong>Director:</strong> The Russo Brothers</li>
+      <li><strong>Writers:</strong> Stephen McFeely and Michael Waldron</li>
     </ul>
+
+    <div class="cast-list">
+      <div><strong>Chris Hemsworth</strong> — <em>Thor</em></div>
+      <div><strong>Vanessa Kirby</strong> — <em>Invisible Woman</em></div>
+      <div><strong>Anthony Mackie</strong> — <em>Captain America</em></div>
+      <div><strong>Sebastian Stan</strong> — <em>Winter Soldier</em></div>
+      <div><strong>Letitia Wright</strong> — <em>Black Panther</em></div>
+      <div><strong>Paul Rudd</strong> — <em>Ant-Man</em></div>
+      <div><strong>Wyatt Russell</strong> — <em>U.S. Agent</em></div>
+      <div><strong>Tenoch Huerta</strong> — <em>Namor</em></div>
+      <div><strong>Ebon Moss-Bachrach</strong> — <em>The Thing</em></div>
+      <div><strong>Simu Liu</strong> — <em>Shang-Chi</em></div>
+      <div><strong>Florence Pugh</strong> — <em>Yelena Belova</em></div>
+      <div><strong>Kelsey Grammer</strong> — <em>Beast</em></div>
+      <div><strong>Lewis Pullman</strong> — <em>Sentry</em></div>
+      <div><strong>Danny Ramirez</strong> — <em>Falcon</em></div>
+      <div><strong>Joseph Quinn</strong> — <em>Human Torch</em></div>
+      <div><strong>David Harbour</strong> — <em>Red Guardian</em></div>
+      <div><strong>Winston Duke</strong> — <em>M’Baku</em></div>
+      <div><strong>Hannah John-Kamen</strong> — <em>Ghost</em></div>
+      <div><strong>Tom Hiddleston</strong> — <em>Loki</em></div>
+      <div><strong>Patrick Stewart</strong> — <em>Professor X</em></div>
+      <div><strong>Ian McKellen</strong> — <em>Magneto</em></div>
+      <div><strong>Alan Cumming</strong> — <em>Nightcrawler</em></div>
+      <div><strong>Rebecca Romijn</strong> — <em>Mystique</em></div>
+      <div><strong>James Marsden</strong> — <em>Cyclops</em></div>
+      <div><strong>Channing Tatum</strong> — <em>Gambit</em></div>
+      <div><strong>Pedro Pascal</strong> — <em>Mr. Fantastic</em></div>
+      <div><strong>Robert Downey Jr.</strong> — <em>Doctor Doom</em></div>
+      <div><strong>Chris Evans</strong> — <em>Steve Rogers</em></div>
+      <div><strong>Hayley Atwell</strong> — <em>Peggy Carter</em></div>
+    </div>
 
     <h2>Latest News</h2>
     <p>Updates and rumors will go here — paste snippets or links to sources as they appear.</p>
@@ -74,7 +122,7 @@
   <div class="watermark">MCU FILM NEWS</div>
 
   <script>
-    // Set the release date
+    // Set the release date (midnight)
     const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
 
     const countdownEl = document.getElementById("countdown");
@@ -102,4 +150,3 @@
   </script>
 </body>
 </html>
-
