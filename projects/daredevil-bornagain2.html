@@ -42,7 +42,7 @@
       color: #444;
     }
 
-    /* cast grid */
+    /* Cast grid */
     .cast-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -56,24 +56,20 @@
       padding: 6px 10px;
       border-radius: 6px;
       border-left: 3px solid #ff5252;
-      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease, margin 0.5s ease;
+      transition: all 0.5s ease;
       overflow: hidden;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Hidden second half initially */
     .cast-list div.hidden {
       max-height: 0;
       opacity: 0;
-      padding: 0 10px;
+      padding-top: 0;
+      padding-bottom: 0;
       margin: 0;
-    }
-
-    /* Visible state */
-    .cast-list div.visible {
-      max-height: 200px; /* Adjust depending on content */
-      opacity: 1;
-      padding: 6px 10px;
-      margin: 0;
+      transform: translateY(-20px);
     }
 
     .cast-list strong { color: #fff; }
@@ -93,7 +89,7 @@
     }
     .toggle-btn:hover { background: #e04444; }
 
-    /* scrollable Twitter feed for multiple tweets */
+    /* Scrollable Twitter feed */
     .twitter-container {
       max-height: 600px;
       overflow-y: auto;
@@ -230,31 +226,32 @@
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
-  // Hide second half initially
   const castDivs = document.querySelectorAll("#cast div");
   const half = Math.ceil(castDivs.length / 2);
 
+  // Initially hide second half
   for (let i = half; i < castDivs.length; i++) {
     castDivs[i].classList.add("hidden");
   }
 
-  // Toggle function with smooth slide
   function toggleCast() {
     const btn = document.querySelector(".toggle-btn");
-    const hiddenDivs = document.querySelectorAll("#cast div.hidden");
+    const isHidden = castDivs[half].classList.contains("hidden");
 
-    if (hiddenDivs.length) {
-      // Reveal second half
+    if (isHidden) {
+      // Show second half with staggered animation
       for (let i = half; i < castDivs.length; i++) {
-        castDivs[i].classList.remove("hidden");
-        castDivs[i].classList.add("visible");
+        const div = castDivs[i];
+        div.classList.remove("hidden");
+        div.style.transitionDelay = `${(i - half) * 0.05}s`; // stagger effect
       }
       btn.textContent = "Hide Cast";
     } else {
       // Hide second half
       for (let i = half; i < castDivs.length; i++) {
-        castDivs[i].classList.remove("visible");
-        castDivs[i].classList.add("hidden");
+        const div = castDivs[i];
+        div.style.transitionDelay = '0s';
+        div.classList.add("hidden");
       }
       btn.textContent = "Show Full Cast";
     }
