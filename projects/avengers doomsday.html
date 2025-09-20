@@ -49,6 +49,7 @@
       gap: 8px 20px;
       margin-top: 10px;
       padding-left: 0;
+      display: none; /* hidden by default */
     }
     .cast-list div {
       background: #1a1a1a;
@@ -58,6 +59,22 @@
     }
     .cast-list strong { color: #fff; }
     .cast-list em { color: #bbb; }
+    /* toggle button */
+    .toggle-btn {
+      margin-top: 10px;
+      background: #ff5252;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .toggle-btn:hover {
+      background: #e04444;
+    }
   </style>
 </head>
 <body>
@@ -77,7 +94,8 @@
       <li><strong>Writers:</strong> Stephen McFeely and Michael Waldron</li>
     </ul>
 
-    <div class="cast-list">
+    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
+    <div id="cast" class="cast-list">
       <div><strong>Chris Hemsworth</strong> — <em>Thor</em></div>
       <div><strong>Vanessa Kirby</strong> — <em>Invisible Woman</em></div>
       <div><strong>Anthony Mackie</strong> — <em>Captain America</em></div>
@@ -124,7 +142,6 @@
   <script>
     // Set the release date (midnight)
     const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
-
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
@@ -144,9 +161,22 @@
       countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    // Update every second
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    // Toggle cast list
+    function toggleCast() {
+      const castList = document.getElementById("cast");
+      const btn = document.querySelector(".toggle-btn");
+
+      if (castList.style.display === "grid") {
+        castList.style.display = "none";
+        btn.textContent = "Show Full Cast";
+      } else {
+        castList.style.display = "grid";
+        btn.textContent = "Hide Cast";
+      }
+    }
   </script>
 </body>
 </html>
