@@ -15,13 +15,19 @@
     }
     header { text-align:center; margin-top:20px; }
     header h1 {
-      font-size: 3rem;
+      font-size: 3rem;         
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 3px;     
       margin: 0;
-      text-transform: uppercase;
+      text-transform: uppercase; 
     }
     .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
+    #countdown {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5252;
+    }
     main { max-width:900px; margin:30px auto; }
     h2 { border-left:4px solid #ff5252; padding-left:10px; color:#fff; margin-top:20px; }
     a { color:#ff5252; text-decoration:none; }
@@ -35,36 +41,173 @@
       font-size: 0.8rem;
       color: #444;
     }
+
+    /* cast grid */
+    .cast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 20px;
+      margin-top: 10px;
+      padding-left: 0;
+      overflow: hidden;
+      max-height: 250px;
+      transition: max-height 0.6s ease;
+    }
+    .cast-list.expanded { max-height: 2000px; }
+    .cast-list div {
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid #ff5252;
+    }
+    .cast-list strong { color: #fff; }
+    .cast-list em { color: #bbb; }
+    .toggle-btn {
+      margin-top: 10px;
+      background: #ff5252;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .toggle-btn:hover { background: #e04444; }
+
+    /* scrollable Twitter feed for multiple tweets */
+    .twitter-container {
+      max-height: 600px;
+      overflow-y: auto;
+      border: 2px solid #222;
+      border-radius: 8px;
+      padding: 5px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Spider-Man: Brand New Day</h1>
-    <div class="meta">Release Date: July 31, 2026</div>
+    <h1>Avengers: Doomsday</h1>
+    <div class="meta">Release Date: December 18, 2026</div>
+    <div id="countdown"></div>
   </header>
 
   <main>
-    <h2>About</h2>
-    <p><em>Spider-Man: Brand New Day</em> continues Peter Parker’s journey in the MCU. (Add synopsis here.)</p>
-
+    <h2>Synopsis</h2>
+    <p>TBA</p>
+    
     <h2>Cast & Crew</h2>
     <ul>
-      <li>Director: TBD</li>
-      <li>Writers: TBD</li>
-      <li>Cast: TBD</li>
+      <li><strong>Director:</strong> Destin Daniel Cretton</li>
+      <li><strong>Writers:</strong> Chris McKenna and Erik Sommers</li>
     </ul>
 
+    <div id="cast" class="cast-list">
+      <div><strong>Tom Holland</strong> — <em>Peter Parker / Spider-Man</em></div>
+      <div><strong>Zendaya</strong> — <em>MJ</em></div>
+      <div><strong>Jacob Batalon</strong> — <em>Ned Leeds</em></div>
+      <div><strong>Sadie Sink</strong> — <em>TBA</em></div>
+      <div><strong>Jon Bernthal</strong> — <em>Punisher</em></div>
+      <div><strong>Mark Ruffalo</strong> — <em>Bruce Banner</em></div>
+      <div><strong>Michael Mando</strong> — <em>Scorpion</em></div>
+      <div><strong>Tramell Tillman</strong> — <em>TBA</em></div>
+      <div><strong>Liza Colón-Zayas</strong> — <em>TBA</em></div>
+    </div>
+    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
+
     <h2>Latest News</h2>
-    <p>Updates and rumors will go here — paste snippets or links to sources as they appear.</p>
 
-<a href="../index.html">⬅ Back to MCU FILM NEWS</a>
-  </main>
+<div style="display: flex; gap: 10px; align-items: flex-start; background: #1a1a1a; padding: 10px; border-radius: 15px; border: 2px solid #ff5252;">
+  <!-- Left Column (Tweet 1 + Tweet 3) -->
+  <div style="display: flex; flex-direction: column; gap: 5px;">
+    <!-- Tweet 1 -->
+    <div style="display: inline-block; transform: scale(0.75); transform-origin: top left;">
+      <blockquote class="twitter-tweet" data-theme="dark" style="margin:0; padding:0;">
+        <p lang="en" dir="ltr">
+          ‘AVENGERS: DOOMSDAY’ has officially wrapped filming.<br><br>
+          In theaters on December 18, 2026. 
+          <a href="https://t.co/vWVbtaSBWe">pic.twitter.com/vWVbtaSBWe</a>
+        </p>
+        &mdash; MCU Film News (@MCUFilmNews) 
+        <a href="https://twitter.com/MCUFilmNews/status/1966473854450057523">September 19, 2025</a>
+      </blockquote>
+    </div>
 
-  <footer>
-    <p>© 2025 Fan-made site, not affiliated with Marvel Studios</p>
-  </footer>
+    <!-- Tweet 3 -->
+    <div style="display: inline-block; transform: scale(0.66); transform-origin: top left; margin-top: -150px;">
+      <blockquote class="twitter-tweet" data-theme="dark" style="margin:0; padding:0;">
+        <p lang="en" dir="ltr">
+          Thank-you letter for the ‘AVENGERS: DOOMSDAY’ crew. 
+          <a href="https://t.co/u1ZylFPUf1">pic.twitter.com/u1ZylFPUf1</a>
+        </p>
+        &mdash; MCU Film News (@MCUFilmNews) 
+        <a href="https://twitter.com/MCUFilmNews/status/1966201322417655977">September 20, 2025</a>
+      </blockquote>
+    </div>
+  </div>
 
-  <div class="watermark">MCU FILM NEWS</div>
+  <!-- Right Column (Tweet 2) -->
+  <div style="display: inline-block; transform: scale(0.66); transform-origin: top left; margin-left: -130px;">
+    <blockquote class="twitter-tweet" data-theme="dark" style="margin:0; padding:0;">
+      <p lang="en" dir="ltr">
+        ‘AVENGERS: DOOMSDAY’ has officially wrapped filming.<br><br>
+        In theaters on December 18, 2026. 
+        <a href="https://t.co/vWVbtaSBWe">pic.twitter.com/vWVbtaSBWe</a>
+      </p>
+      &mdash; MCU Film News (@MCUFilmNews) 
+      <a href="https://twitter.com/MCUFilmNews/status/1969081894504485024">September 19, 2025</a>
+    </blockquote>
+  </div>
+</div>
+
+<!-- Back link added at the very bottom of the main section -->
+<a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
+</main>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  // Countdown
+  const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = releaseDate - now;
+
+    if (distance < 0) {
+      countdownEl.innerHTML = "Now in theaters!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Toggle cast list
+  function toggleCast() {
+    const castList = document.getElementById("cast");
+    const btn = document.querySelector(".toggle-btn");
+
+    if (castList.classList.contains("expanded")) {
+      castList.classList.remove("expanded");
+      btn.textContent = "Show Full Cast";
+    } else {
+      castList.classList.add("expanded");
+      btn.textContent = "Hide Cast";
+    }
+  }
+</script>
 </body>
 </html>
-
