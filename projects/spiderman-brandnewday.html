@@ -121,50 +121,59 @@
     <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
     <h2>Latest News</h2>
+<div style="display: flex; flex-direction: column; gap: 15px;">
 
-<div style="display: flex; gap: 10px; align-items: flex-start; background: #1a1a1a; padding: 10px; border-radius: 15px; border: 2px solid #ff5252;">
-  <!-- Left Column (Tweet 1 + Tweet 3) -->
-  <div style="display: flex; flex-direction: column; gap: 5px;">
-    <!-- Tweet 1 -->
-    <div style="display: inline-block; transform: scale(0.75); transform-origin: top left;">
-      <blockquote class="twitter-tweet" data-theme="dark" style="margin:0; padding:0;">
-        <p lang="en" dir="ltr">
-          ‘AVENGERS: DOOMSDAY’ has officially wrapped filming.<br><br>
-          In theaters on December 18, 2026. 
-          <a href="https://t.co/vWVbtaSBWe">pic.twitter.com/vWVbtaSBWe</a>
-        </p>
-        &mdash; MCU Film News (@MCUFilmNews) 
-        <a href="https://twitter.com/MCUFilmNews/status/1966473854450057523">September 19, 2025</a>
-      </blockquote>
+  <!-- Card 1 -->
+  <a href="https://x.com/MCUFilmNews/status/1966201322417655977" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/G0lZme8aMAU88hI?format=png&name=small" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">Tom Holland, Zendaya, and Jacob Batalon on the set of ‘Spider-Man: Brand New Day’</strong>
+        <p style="margin:5px 0 0; color:#ccc;"></p>
+      </div>
     </div>
+  </a>
 
-    <!-- Tweet 3 -->
-    <div style="display: inline-block; transform: scale(0.66); transform-origin: top left; margin-top: -150px;">
-      <blockquote class="twitter-tweet" data-theme="dark" style="margin:0; padding:0;">
-        <p lang="en" dir="ltr">
-          Thank-you letter for the ‘AVENGERS: DOOMSDAY’ crew. 
-          <a href="https://t.co/u1ZylFPUf1">pic.twitter.com/u1ZylFPUf1</a>
-        </p>
-        &mdash; MCU Film News (@MCUFilmNews) 
-        <a href="https://twitter.com/MCUFilmNews/status/1966201322417655977">September 20, 2025</a>
-      </blockquote>
+  <!-- Card 2 -->
+  <a href="https://x.com/MCUFilmNews/status/1966473854450057523" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/G0pRS9MacAA7c3c?format=png&name=900x900" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">Spider-Man: Brand New Day is now filming at Pinewood Studios in the U.K.</strong>
+        <p style="margin:5px 0 0; color:#ccc;"></p>
+      </div>
     </div>
-  </div>
+  </a>
 
-  <!-- Right Column (Tweet 2) -->
-  <div style="display: inline-block; transform: scale(0.66); transform-origin: top left; margin-left: -130px;">
-    <blockquote class="twitter-tweet" data-theme="dark" style="margin:0; padding:0;">
-      <p lang="en" dir="ltr">
-        ‘AVENGERS: DOOMSDAY’ has officially wrapped filming.<br><br>
-        In theaters on December 18, 2026. 
-        <a href="https://t.co/vWVbtaSBWe">pic.twitter.com/vWVbtaSBWe</a>
-      </p>
-      &mdash; MCU Film News (@MCUFilmNews) 
-      <a href="https://twitter.com/MCUFilmNews/status/1969081894504485024">September 19, 2025</a>
-    </blockquote>
-  </div>
 </div>
-
 <!-- Back link added at the very bottom of the main section -->
 <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
 </main>
@@ -211,5 +220,6 @@
 </script>
 </body>
 </html>
+
 
 
