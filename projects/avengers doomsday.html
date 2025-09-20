@@ -29,13 +29,7 @@
     a:hover { text-decoration:underline; }
     .back { margin-top:30px; display:block; }
     footer { text-align:center; color:#888; margin-top:40px; border-top:1px solid #222; padding-top:15px; }
-    .watermark {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      font-size: 0.8rem;
-      color: #444;
-    }
+    .watermark { position: fixed; bottom: 10px; right: 10px; font-size: 0.8rem; color: #444; }
 
     /* Cast grid */
     .cast-list {
@@ -45,7 +39,6 @@
       margin-top: 10px;
       padding-left: 0;
     }
-
     .cast-list div {
       background: #1a1a1a;
       padding: 6px 10px;
@@ -57,7 +50,6 @@
       transform: translateY(0);
       transition: all 0.5s ease;
     }
-
     /* Hidden second half initially */
     .cast-list div.hidden {
       max-height: 0;
@@ -68,7 +60,6 @@
       transform: translateY(-20px);
       transition: all 0.5s ease;
     }
-
     .cast-list strong { color: #fff; }
     .cast-list em { color: #bbb; }
 
@@ -153,7 +144,55 @@
 
 <h2>Latest News</h2>
 <div style="display: flex; flex-direction: column; gap: 15px;">
-  <!-- Your news cards here, unchanged -->
+  <!-- Card 1 -->
+  <a href="https://x.com/MCUFilmNews/status/1969107129962250473" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/G1OWl6fbQAAdf7c?format=jpg&name=large" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">‘AVENGERS: DOOMSDAY’ has officially wrapped filming.</strong>
+        <p style="margin:5px 0 0; color:#ccc;">In theaters on December 18, 2026.</p>
+      </div>
+    </div>
+  </a>
+
+  <!-- Card 2 -->
+  <a href="https://x.com/MCUFilmNews/status/1969169362222276758" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/G1PlGUrbQAEtZow?format=jpg&name=900x900" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">‘AVENGERS: DOOMSDAY’ wrapped principal photography in the U.K. today.</strong>
+        <p style="margin:5px 0 0; color:#ccc;">The film will also undergo additional photography later in production.</p>
+      </div>
+    </div>
+  </a>
 </div>
 
 <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
@@ -176,7 +215,7 @@ for (let i = 0; i < half; i++) {
   setTimeout(() => {
     castDivs[i].style.opacity = 1;
     castDivs[i].style.transform = 'translateY(0)';
-  }, i * 100); // staggered 100ms
+  }, i * 100);
 }
 
 let isVisible = false;
