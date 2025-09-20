@@ -49,7 +49,12 @@
       gap: 8px 20px;
       margin-top: 10px;
       padding-left: 0;
-      display: none; /* hidden by default */
+      overflow: hidden;
+      max-height: 600px; /* show about first 8–10 actors */
+      transition: max-height 0.6s ease;
+    }
+    .cast-list.expanded {
+      max-height: 2000px; /* enough space to show all */
     }
     .cast-list div {
       background: #1a1a1a;
@@ -94,7 +99,6 @@
       <li><strong>Writers:</strong> Stephen McFeely and Michael Waldron</li>
     </ul>
 
-    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
     <div id="cast" class="cast-list">
       <div><strong>Chris Hemsworth</strong> — <em>Thor</em></div>
       <div><strong>Vanessa Kirby</strong> — <em>Invisible Woman</em></div>
@@ -126,6 +130,7 @@
       <div><strong>Chris Evans</strong> — <em>Steve Rogers</em></div>
       <div><strong>Hayley Atwell</strong> — <em>Peggy Carter</em></div>
     </div>
+    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
     <h2>Latest News</h2>
     <p>Updates and rumors will go here — paste snippets or links to sources as they appear.</p>
@@ -169,11 +174,11 @@
       const castList = document.getElementById("cast");
       const btn = document.querySelector(".toggle-btn");
 
-      if (castList.style.display === "grid") {
-        castList.style.display = "none";
+      if (castList.classList.contains("expanded")) {
+        castList.classList.remove("expanded");
         btn.textContent = "Show Full Cast";
       } else {
-        castList.style.display = "grid";
+        castList.classList.add("expanded");
         btn.textContent = "Hide Cast";
       }
     }
