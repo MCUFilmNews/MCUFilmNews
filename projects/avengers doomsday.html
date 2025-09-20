@@ -102,6 +102,7 @@
     <div id="cast" class="cast-list">
       <div><strong>Robert Downey Jr.</strong> — <em>Doctor Doom</em></div>
       <div><strong>Chris Hemsworth</strong> — <em>Thor</em></div>
+      <div><strong>Benedict Cumberbatch</strong> — <em>Doctor Strange</em></div>
       <div><strong>Chris Evans</strong> — <em>Steve Rogers</em></div>
       <div><strong>Anthony Mackie</strong> — <em>Captain America</em></div>
       <div><strong>Sebastian Stan</strong> — <em>Winter Soldier</em></div>
@@ -118,7 +119,6 @@
       <div><strong>Ian McKellen</strong> — <em>Magneto</em></div>
       <div><strong>Kelsey Grammer</strong> — <em>Beast</em></div>
       <div><strong>Lewis Pullman</strong> — <em>Sentry</em></div>
-      <div><strong>Benedict Cumberbatch</strong> — <em>Doctor Strange</em></div>
       <div><strong>Danny Ramirez</strong> — <em>Falcon</em></div>
       <div><strong>David Harbour</strong> — <em>Red Guardian</em></div>
       <div><strong>Wyatt Russell</strong> — <em>U.S. Agent</em></div>
@@ -134,15 +134,15 @@
     <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
     <h2>Latest News</h2>
-<p>Live updates from trusted MCU sources:</p>
+    <p>Live updates from MCUFilmNews on X:</p>
 
-<a class="twitter-timeline" 
-   data-theme="dark" 
-   data-height="500" 
-   href="https://twitter.com/MCU_Direct?ref_src=twsrc%5Etfw">
-   Tweets by MCU_Direct
-</a> 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="twitter-timeline" 
+       href="https://twitter.com/MCUFilmNews?ref_src=twsrc%5Etfw" 
+       data-theme="dark" 
+       data-height="500">
+       Tweets by MCUFilmNews
+    </a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <a href="../index.html">⬅ Back to MCU FILM NEWS</a>
   </main>
@@ -154,7 +154,7 @@
   <div class="watermark">MCU FILM NEWS</div>
 
   <script>
-    // Set the release date (midnight)
+    // Countdown
     const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
     const countdownEl = document.getElementById("countdown");
 
@@ -186,15 +186,4 @@
       if (castList.classList.contains("expanded")) {
         castList.classList.remove("expanded");
         btn.textContent = "Show Full Cast";
-      } else {
-        castList.classList.add("expanded");
-        btn.textContent = "Hide Cast";
-      }
-    }
-  </script>
-</body>
-</html>
-
-
-
-
+     
