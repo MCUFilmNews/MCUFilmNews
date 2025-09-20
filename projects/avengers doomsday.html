@@ -22,6 +22,12 @@
       text-transform: uppercase; /* make it ALL CAPS */
     }
     .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
+    #countdown {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5252;
+    }
     main { max-width:900px; margin:30px auto; }
     h2 { border-left:4px solid #ff5252; padding-left:10px; color:#fff; margin-top:20px; }
     a { color:#ff5252; text-decoration:none; }
@@ -42,6 +48,7 @@
   <header>
     <h1>Avengers: Doomsday</h1>
     <div class="meta">Release Date: December 18, 2026</div>
+    <div id="countdown"></div>
   </header>
 
   <main>
@@ -58,7 +65,7 @@
     <h2>Latest News</h2>
     <p>Updates and rumors will go here — paste snippets or links to sources as they appear.</p>
 
-<a href="../index.html">⬅ Back to MCU FILM NEWS</a>
+    <a href="../index.html">⬅ Back to MCU FILM NEWS</a>
   </main>
 
   <footer>
@@ -66,11 +73,33 @@
   </footer>
 
   <div class="watermark">MCU FILM NEWS</div>
+
+  <script>
+    // Set the release date
+    const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
+
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = releaseDate - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "Now in theaters!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Update every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
