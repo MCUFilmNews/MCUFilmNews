@@ -98,9 +98,6 @@
   </header>
 
   <main>
-    <!-- Back link added here -->
-    <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
-    
     <h2>Synopsis</h2>
     <p>Doctor Doom has officially arrived in the MCU. This villain, a master of cutting-edge science and powerful magic, will unleash a cascading crisis across the entire multiverse.</p>
     
@@ -189,45 +186,49 @@
   </div>
 </div>
 
+<!-- Back link added at the very bottom of the main section -->
+<a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
+</main>
+
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script>
-    // Countdown
-    const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
+<script>
+  // Countdown
+  const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = releaseDate - now;
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = releaseDate - now;
 
-      if (distance < 0) {
-        countdownEl.innerHTML = "Now in theaters!";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if (distance < 0) {
+      countdownEl.innerHTML = "Now in theaters!";
+      return;
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Toggle cast list
-    function toggleCast() {
-      const castList = document.getElementById("cast");
-      const btn = document.querySelector(".toggle-btn");
+    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
 
-      if (castList.classList.contains("expanded")) {
-        castList.classList.remove("expanded");
-        btn.textContent = "Show Full Cast";
-      } else {
-        castList.classList.add("expanded");
-        btn.textContent = "Hide Cast";
-      }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Toggle cast list
+  function toggleCast() {
+    const castList = document.getElementById("cast");
+    const btn = document.querySelector(".toggle-btn");
+
+    if (castList.classList.contains("expanded")) {
+      castList.classList.remove("expanded");
+      btn.textContent = "Show Full Cast";
+    } else {
+      castList.classList.add("expanded");
+      btn.textContent = "Hide Cast";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
