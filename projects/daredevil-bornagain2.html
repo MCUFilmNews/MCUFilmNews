@@ -56,20 +56,18 @@
       padding: 6px 10px;
       border-radius: 6px;
       border-left: 3px solid #ff5252;
-      transition: all 0.5s ease;
       overflow: hidden;
-      opacity: 1;
-      transform: translateY(0);
+      margin-bottom: 5px;
+
+      /* Netflix-style animation */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
-    /* Hidden second half initially */
-    .cast-list div.hidden {
-      max-height: 0;
-      opacity: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin: 0;
-      transform: translateY(-20px);
+    .cast-list div.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .cast-list strong { color: #fff; }
@@ -121,6 +119,7 @@
       <li><strong>Writers:</strong> TBA</li>
     </ul>
 
+    <!-- Netflix-style Cast List -->
     <div id="cast" class="cast-list">
       <div><strong>Charlie Cox</strong> — <em>Daredevil</em></div>
       <div><strong>Vincent D'Onofrio</strong> — <em>Kingpin</em></div>
@@ -143,8 +142,7 @@
 
     <h2>Latest News</h2>
     <div style="display: flex; flex-direction: column; gap: 15px;">
-
-      <!-- Card 1 -->
+      <!-- News Cards (unchanged) -->
       <a href="https://x.com/MCUFilmNews/status/1968725403742147069" target="_blank" style="text-decoration: none;">
         <div style="
           display: flex;
@@ -169,7 +167,6 @@
         </div>
       </a>
 
-      <!-- Card 2 -->
       <a href="https://x.com/MCUFilmNews/status/1968690583884419191" target="_blank" style="text-decoration: none;">
         <div style="
           display: flex;
@@ -194,7 +191,6 @@
         </div>
       </a>
 
-      <!-- Card 3 -->
       <a href="https://x.com/MCUFilmNews/status/1947018624553906437" target="_blank" style="text-decoration: none;">
         <div style="
           display: flex;
@@ -213,12 +209,11 @@
                alt="Avengers Doomsday" 
                style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
           <div style="color:#eee;">
-            <strong style="font-size:1.1rem;">Kevin Feige confirms that the events of 'THUNDERBOLTS' won’t be addressed in 'DAREDEVIL: BORN AGAIN' Season 2..</strong>
+            <strong style="font-size:1.1rem;">Kevin Feige confirms that the events of 'THUNDERBOLTS' won’t be addressed in 'DAREDEVIL: BORN AGAIN' Season 2.</strong>
             <p style="margin:5px 0 0; color:#ccc;"></p>
           </div>
         </div>
       </a>
-
     </div>
 
     <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
@@ -229,31 +224,32 @@
   const castDivs = document.querySelectorAll("#cast div");
   const half = Math.ceil(castDivs.length / 2);
 
-  // Initially hide second half
-  for (let i = half; i < castDivs.length; i++) {
-    castDivs[i].classList.add("hidden");
+  // First half visible on page load with Netflix-style stagger
+  for (let i = 0; i < half; i++) {
+    setTimeout(() => {
+      castDivs[i].classList.add("visible");
+    }, i * 100); // stagger delay 100ms
   }
 
-  function toggleCast() {
-    const btn = document.querySelector(".toggle-btn");
-    const isHidden = castDivs[half].classList.contains("hidden");
+  let isVisible = false;
 
-    if (isHidden) {
-      // Show second half with staggered animation
+  function toggleCast() {
+    isVisible = !isVisible;
+
+    if (isVisible) {
+      // Show second half with stagger
       for (let i = half; i < castDivs.length; i++) {
-        const div = castDivs[i];
-        div.classList.remove("hidden");
-        div.style.transitionDelay = `${(i - half) * 0.05}s`; // stagger effect
+        setTimeout(() => {
+          castDivs[i].classList.add("visible");
+        }, (i - half) * 100);
       }
-      btn.textContent = "Hide Cast";
+      document.querySelector(".toggle-btn").textContent = "Hide Cast";
     } else {
-      // Hide second half
+      // Hide second half instantly
       for (let i = half; i < castDivs.length; i++) {
-        const div = castDivs[i];
-        div.style.transitionDelay = '0s';
-        div.classList.add("hidden");
+        castDivs[i].classList.remove("visible");
       }
-      btn.textContent = "Show Full Cast";
+      document.querySelector(".toggle-btn").textContent = "Show Full Cast";
     }
   }
 </script>
