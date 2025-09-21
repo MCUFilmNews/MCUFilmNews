@@ -42,20 +42,14 @@
       color: #444;
     }
 
-   .cast-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 8px 20px;
-  margin-top: 10px;
-  padding-left: 0;
-  overflow: hidden;
-  max-height: 150px; /* show all by default */
-  transition: max-height 0.6s ease;
-}
-.cast-list.expanded {
-  max-height: 2000px; /* optional, you can keep or adjust */
-}
-    .cast-list.expanded { max-height: 2000px; }
+    /* Cast grid */
+    .cast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 20px;
+      margin-top: 10px;
+      padding-left: 0;
+    }
     .cast-list div {
       background: #1a1a1a;
       padding: 6px 10px;
@@ -68,6 +62,11 @@
     .cast-list div.hidden {
       opacity: 0;
       transform: translateY(-20px);
+      height: 0;
+      margin: 0;
+      padding: 0;
+      border: none;
+      overflow: hidden;
     }
     .cast-list strong { color: #fff; }
     .cast-list em { color: #bbb; }
@@ -85,7 +84,7 @@
     }
     .toggle-btn:hover { background: #e04444; }
 
-    /* scrollable Twitter feed for multiple tweets */
+    /* scrollable Twitter feed */
     .twitter-container {
       max-height: 600px;
       overflow-y: auto;
@@ -130,9 +129,8 @@
     <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
     <h2>Latest News</h2>
-    <!-- (your news cards unchanged) -->
     <div style="display: flex; flex-direction: column; gap: 15px;">
-      <!-- Card 1 -->
+      <!-- Example news card -->
       <a href="https://x.com/MCUFilmNews/status/1966201322417655977" target="_blank" style="text-decoration: none;">
         <div style="display:flex;align-items:center;gap:15px;background:#1a1a1a;padding:15px;border-radius:15px;border:2px solid #ff5252;transition:transform 0.2s,box-shadow 0.2s;"
           onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
@@ -143,7 +141,7 @@
           </div>
         </div>
       </a>
-      <!-- (other cards stay the same) -->
+      <!-- Add other cards here -->
     </div>
 
     <!-- Back link -->
@@ -176,30 +174,28 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Toggle cast list with staggered animation
+    // Toggle cast list (always show 2 rows when collapsed)
     function toggleCast() {
       const castList = document.getElementById("cast");
       const btn = document.querySelector(".toggle-btn");
       const castItems = castList.querySelectorAll("div");
 
       if (castList.classList.contains("expanded")) {
-        // Hide smoothly
+        // Collapse back to 2
         castItems.forEach((div, index) => {
-          setTimeout(() => div.classList.add("hidden"), index * 30);
+          if (index >= 2) div.classList.add("hidden");
         });
         castList.classList.remove("expanded");
         btn.textContent = "Show Full Cast";
       } else {
-        // Show smoothly
+        // Expand and show all
         castList.classList.add("expanded");
-        castItems.forEach((div, index) => {
-          setTimeout(() => div.classList.remove("hidden"), index * 30);
-        });
+        castItems.forEach(div => div.classList.remove("hidden"));
         btn.textContent = "Hide Cast";
       }
     }
 
-    // Hide items beyond first 5 initially
+    // On load → hide everything beyond first 2
     const castList = document.getElementById("cast");
     const castItems = castList.querySelectorAll("div");
     castItems.forEach((div, index) => {
@@ -208,6 +204,3 @@
   </script>
 </body>
 </html>
-
-
-
