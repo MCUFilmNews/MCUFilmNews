@@ -15,8 +15,9 @@
 
     header {
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 50px 20px 30px;
     }
+
     header h1 {
       color: #fff;
       font-size: 3rem;
@@ -25,11 +26,12 @@
       margin: 0;
       text-transform: uppercase;
     }
+
     .header-line {
       height: 3px;
-      width: 80px;
+      width: 100px;
       background: #ff5252;
-      margin: 15px auto;
+      margin: 15px auto 0;
       border-radius: 2px;
     }
 
@@ -40,45 +42,49 @@
     }
 
     h2.section-title {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #ff5252;
-      margin-bottom: 15px;
+      margin: 40px 0 20px;
       border-bottom: 2px solid #222;
       padding-bottom: 5px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-      margin-bottom: 50px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
     }
 
     .card {
       background: #111;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
       display: flex;
       flex-direction: column;
     }
+
     .card:hover {
       transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 8px 20px rgba(255,82,82,0.5);
+      box-shadow: 0 10px 25px rgba(255,82,82,0.5);
     }
+
     .card img {
       width: 100%;
       display: block;
     }
+
     .card-info {
-      padding: 10px;
+      padding: 12px;
       text-align: center;
     }
+
     .card-title {
       font-size: 1.1rem;
       font-weight: bold;
-      margin: 5px 0;
+      margin: 6px 0 4px;
     }
+
     .card-date {
       font-size: 0.9rem;
       color: #ccc;
@@ -95,87 +101,87 @@
 
     @media(max-width:900px){
       .grid{
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>MCU Film News</h1>
-    <div class="header-line"></div>
-  </header>
 
-  <main>
-    <!-- Upcoming Movies -->
-    <h2 class="section-title">🎬 Upcoming Movies</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://image.tmdb.org/t/p/original/9JCQtDCSpPR2ld55yNlEg1VwcQo.jpg" alt="Spider-Man: Brand New Day poster">
-        <div class="card-info">
-          <div class="card-title">Spider-Man: Brand New Day</div>
-          <div class="card-date">July 31, 2026</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://image.tmdb.org/t/p/original/eO6OdA4RDRWeCVlDMcsoxWYFySD.jpg" alt="Avengers: Doomsday poster">
-        <div class="card-info">
-          <div class="card-title">Avengers: Doomsday</div>
-          <div class="card-date">Dec 18, 2026</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://image.tmdb.org/t/p/original/f0YBuh4hyiAheXhh4JnJWoKi9g5.jpg" alt="Avengers: Secret Wars poster">
-        <div class="card-info">
-          <div class="card-title">Avengers: Secret Wars</div>
-          <div class="card-date">Dec 17, 2027</div>
-        </div>
+<header>
+  <h1>MCU Film News</h1>
+  <div class="header-line"></div>
+</header>
+
+<main>
+  <!-- Upcoming Movies -->
+  <h2 class="section-title">🎬 Upcoming Movies</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/9JCQtDCSpPR2ld55yNlEg1VwcQo.jpg" alt="Spider-Man: Brand New Day poster">
+      <div class="card-info">
+        <div class="card-title">Spider-Man: Brand New Day</div>
+        <div class="card-date">July 31, 2026</div>
       </div>
     </div>
-
-    <!-- Upcoming Disney+ Series -->
-    <h2 class="section-title">📺 Upcoming Disney+ Series</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://www.marvel.com/tv-shows/marvel-zombies/image-poster.jpg" alt="Marvel Zombies poster">
-        <div class="card-info">
-          <div class="card-title">Marvel Zombies</div>
-          <div class="card-date">Sept 24, 2025</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x450?text=Wonder+Man" alt="Wonder Man poster">
-        <div class="card-info">
-          <div class="card-title">Wonder Man</div>
-          <div class="card-date">Dec 2025</div>
-        </div>
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/eO6OdA4RDRWeCVlDMcsoxWYFySD.jpg" alt="Avengers: Doomsday poster">
+      <div class="card-info">
+        <div class="card-title">Avengers: Doomsday</div>
+        <div class="card-date">Dec 18, 2026</div>
       </div>
     </div>
-
-    <!-- Upcoming Animated Projects -->
-    <h2 class="section-title">🎨 Upcoming Animated Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x450?text=Your+Friendly+Neighborhood+Spider-Man+S2" alt="Spider-Man S2 poster">
-        <div class="card-info">
-          <div class="card-title">Friendly Neighborhood Spider-Man — Season 2</div>
-          <div class="card-date">2026</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x450?text=X-Men+97+Season+2" alt="X-Men ’97 Season 2 poster">
-        <div class="card-info">
-          <div class="card-title">X-Men ’97 — Season 2</div>
-          <div class="card-date">2026</div>
-        </div>
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/f0YBuh4hyiAheXhh4JnJWoKi9g5.jpg" alt="Avengers: Secret Wars poster">
+      <div class="card-info">
+        <div class="card-title">Avengers: Secret Wars</div>
+        <div class="card-date">Dec 17, 2027</div>
       </div>
     </div>
+  </div>
 
-  </main>
+  <!-- Upcoming Disney+ Series -->
+  <h2 class="section-title">📺 Upcoming Disney+ Series</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/qo2sXD6XcwZ18ojZrEnRbPKqYLv.jpg" alt="Marvel Zombies poster">
+      <div class="card-info">
+        <div class="card-title">Marvel Zombies</div>
+        <div class="card-date">Sept 24, 2025</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/qo2sXD6XcwZ18ojZrEnRbPKqYLv.jpg" alt="Wonder Man poster">
+      <div class="card-info">
+        <div class="card-title">Wonder Man</div>
+        <div class="card-date">Dec 2025</div>
+      </div>
+    </div>
+  </div>
 
-  <footer>
-    <p>© 2025 MCUFilmNews | Fan-made site, not affiliated with Marvel Studios</p>
-  </footer>
+  <!-- Upcoming Animated Projects -->
+  <h2 class="section-title">🎨 Upcoming Animated Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/kQnFRx4jiu2Rl8y88waNECeIw2c.jpg" alt="Friendly Neighborhood Spider-Man poster">
+      <div class="card-info">
+        <div class="card-title">Friendly Neighborhood Spider-Man — Season 2</div>
+        <div class="card-date">2026</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/original/wifIJbZgM0X5HAieXGawEEG7vSO.jpg" alt="X-Men '97 Season 2 poster">
+      <div class="card-info">
+        <div class="card-title">X-Men '97 — Season 2</div>
+        <div class="card-date">2026</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 MCUFilmNews | Fan-made site, not affiliated with Marvel Studios</p>
+</footer>
+
 </body>
 </html>
-
