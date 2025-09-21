@@ -43,15 +43,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
+      display: flex;
+      align-items: flex-start; /* align top edges */
       gap: 30px;
     }
 
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
+    /* Left column */
+    .content {
+      flex: 2;
+    }
+
+    /* Right column */
+    .sidebar {
+      flex: 1;
+      max-width: 350px;
+      position: sticky; /* keeps it neat, doesn’t stretch */
+      top: 20px;
+      align-self: flex-start;
     }
 
     /* Section Titles */
@@ -103,7 +111,7 @@
       color: #ff5252;
     }
 
-    /* Right Column Countdown */
+    /* Sidebar Countdown */
     .countdowns {
       background: #111;
       border: 1px solid #222;
@@ -113,6 +121,7 @@
     .countdowns h2 {
       border: none;
       color: #ff5252;
+      margin-top: 0;
     }
     .countdowns h3 {
       margin: 20px 0 10px;
@@ -148,6 +157,16 @@
       border-top: 1px solid #222;
       margin-top: 50px;
     }
+
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+      }
+      .sidebar {
+        position: relative;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -159,7 +178,7 @@
 
   <main>
     <!-- Left Column -->
-    <div>
+    <div class="content">
       <h2>🎬 Upcoming Movies</h2>
       <div class="post">
         <div class="date-tag">July 31, 2026</div>
@@ -212,31 +231,33 @@
     </div>
 
     <!-- Right Column (Countdowns) -->
-    <aside class="countdowns">
-      <h2>⏳ Countdowns</h2>
+    <aside class="sidebar">
+      <div class="countdowns">
+        <h2>⏳ Countdowns</h2>
 
-      <h3>🎬 Movies</h3>
-      <ul>
-        <li>Spider-Man: Brand New Day — <span>674 days left</span></li>
-        <li>Avengers: Doomsday — <span>820 days left</span></li>
-        <li>Avengers: Secret Wars — <span>1184 days left</span></li>
-        <li>Marvel Studios X-Men — <span>TBA</span></li>
-        <li>Blade — <span>TBA</span></li>
-      </ul>
+        <h3>🎬 Movies</h3>
+        <ul>
+          <li>Spider-Man: Brand New Day — <span>674 days left</span></li>
+          <li>Avengers: Doomsday — <span>820 days left</span></li>
+          <li>Avengers: Secret Wars — <span>1184 days left</span></li>
+          <li>Marvel Studios X-Men — <span>TBA</span></li>
+          <li>Blade — <span>TBA</span></li>
+        </ul>
 
-      <h3>📺 Disney+ Series</h3>
-      <ul>
-        <li>Wonder Man — <span>Here soon</span></li>
-        <li>Daredevil: Born Again — <span>Next year</span></li>
-        <li>Vision Quest — <span>Coming 2026</span></li>
-      </ul>
+        <h3>📺 Disney+ Series</h3>
+        <ul>
+          <li>Wonder Man — <span>Here soon</span></li>
+          <li>Daredevil: Born Again — <span>Next year</span></li>
+          <li>Vision Quest — <span>Coming 2026</span></li>
+        </ul>
 
-      <h3>🎨 Animated</h3>
-      <ul>
-        <li>Marvel Zombies — <span>The time is here</span></li>
-        <li>Spider-Man S2 — <span>2026</span></li>
-        <li>X-Men ’97 S2 — <span>2026</span></li>
-      </ul>
+        <h3>🎨 Animated</h3>
+        <ul>
+          <li>Marvel Zombies — <span>The time is here</span></li>
+          <li>Spider-Man S2 — <span>2026</span></li>
+          <li>X-Men ’97 S2 — <span>2026</span></li>
+        </ul>
+      </div>
     </aside>
   </main>
 
