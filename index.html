@@ -43,23 +43,25 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
+    }
+
+    /* Each pair of sections (Movies vs Countdowns, etc.) */
+    .section-pair {
       display: flex;
-      align-items: flex-start; /* align top edges */
       gap: 30px;
+      margin-bottom: 40px;
+      align-items: stretch; /* force equal height */
     }
 
-    /* Left column */
-    .content {
-      flex: 2;
-    }
-
-    /* Right column */
-    .sidebar {
+    /* Left & Right Boxes */
+    .content-box {
       flex: 1;
-      max-width: 350px;
-      position: sticky; /* keeps it neat, doesn’t stretch */
-      top: 20px;
-      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 20px;
     }
 
     /* Section Titles */
@@ -67,7 +69,7 @@
       font-size: 1.4rem;
       font-weight: bold;
       color: #ff5252;
-      margin: 40px 0 20px;
+      margin: 0 0 20px;
       text-transform: uppercase;
       border-bottom: 2px solid #222;
       padding-bottom: 5px;
@@ -75,12 +77,12 @@
 
     /* Left Column Posts */
     .post {
-      background: #111;
+      background: #1a1a1a;
       border: 1px solid #222;
-      border-radius: 10px;
-      padding: 18px;
-      margin-bottom: 22px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.5);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .post:hover {
@@ -95,11 +97,11 @@
       font-size: 0.8rem;
       padding: 3px 8px;
       border-radius: 20px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .post-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
     }
     .post-title a {
@@ -112,19 +114,13 @@
     }
 
     /* Sidebar Countdown */
-    .countdowns {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 10px;
-      padding: 20px;
-    }
     .countdowns h2 {
       border: none;
       color: #ff5252;
       margin-top: 0;
     }
     .countdowns h3 {
-      margin: 20px 0 10px;
+      margin: 15px 0 10px;
       color: #fff;
       font-size: 1.1rem;
       border-bottom: 1px solid #222;
@@ -136,7 +132,7 @@
       margin: 0;
     }
     .countdowns li {
-      margin: 10px 0;
+      margin: 8px 0;
       color: #ccc;
       font-size: 0.95rem;
       transition: color 0.2s;
@@ -159,12 +155,8 @@
     }
 
     @media (max-width: 900px) {
-      main {
+      .section-pair {
         flex-direction: column;
-      }
-      .sidebar {
-        position: relative;
-        max-width: 100%;
       }
     }
   </style>
@@ -177,64 +169,34 @@
   </header>
 
   <main>
-    <!-- Left Column -->
-    <div class="content">
-      <h2>🎬 Upcoming Movies</h2>
-      <div class="post">
-        <div class="date-tag">July 31, 2026</div>
-        <div class="post-title"><a href="#">Spider-Man: Brand New Day</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">Dec 18, 2026</div>
-        <div class="post-title"><a href="#">Avengers: Doomsday</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">Dec 17, 2027</div>
-        <div class="post-title"><a href="#">Avengers: Secret Wars</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">TBA</div>
-        <div class="post-title"><a href="#">Marvel Studios X-Men</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">TBA</div>
-        <div class="post-title"><a href="#">Blade</a></div>
-      </div>
-
-      <h2>📺 Upcoming Disney+ Series</h2>
-      <div class="post">
-        <div class="date-tag">Dec 2025</div>
-        <div class="post-title"><a href="#">Wonder Man</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">2025</div>
-        <div class="post-title"><a href="#">Daredevil: Born Again</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">2026</div>
-        <div class="post-title"><a href="#">Vision Quest</a></div>
+    <!-- Movies + Countdowns -->
+    <div class="section-pair">
+      <div class="content-box">
+        <h2>🎬 Upcoming Movies</h2>
+        <div class="post">
+          <div class="date-tag">July 31, 2026</div>
+          <div class="post-title"><a href="#">Spider-Man: Brand New Day</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">Dec 18, 2026</div>
+          <div class="post-title"><a href="#">Avengers: Doomsday</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">Dec 17, 2027</div>
+          <div class="post-title"><a href="#">Avengers: Secret Wars</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">TBA</div>
+          <div class="post-title"><a href="#">Marvel Studios X-Men</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">TBA</div>
+          <div class="post-title"><a href="#">Blade</a></div>
+        </div>
       </div>
 
-      <h2>🎨 Upcoming Animated Projects</h2>
-      <div class="post">
-        <div class="date-tag">Sept 24, 2025</div>
-        <div class="post-title"><a href="#">Marvel Zombies (Animated Series)</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">2026</div>
-        <div class="post-title"><a href="#">Your Friendly Neighborhood Spider-Man — Season 2</a></div>
-      </div>
-      <div class="post">
-        <div class="date-tag">2026</div>
-        <div class="post-title"><a href="#">X-Men ’97 — Season 2</a></div>
-      </div>
-    </div>
-
-    <!-- Right Column (Countdowns) -->
-    <aside class="sidebar">
-      <div class="countdowns">
+      <aside class="content-box countdowns">
         <h2>⏳ Countdowns</h2>
-
         <h3>🎬 Movies</h3>
         <ul>
           <li>Spider-Man: Brand New Day — <span>674 days left</span></li>
@@ -243,22 +205,66 @@
           <li>Marvel Studios X-Men — <span>TBA</span></li>
           <li>Blade — <span>TBA</span></li>
         </ul>
+      </aside>
+    </div>
 
-        <h3>📺 Disney+ Series</h3>
+    <!-- Disney+ Series + Countdowns -->
+    <div class="section-pair">
+      <div class="content-box">
+        <h2>📺 Upcoming Disney+ Series</h2>
+        <div class="post">
+          <div class="date-tag">Dec 2025</div>
+          <div class="post-title"><a href="#">Wonder Man</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">2025</div>
+          <div class="post-title"><a href="#">Daredevil: Born Again</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">2026</div>
+          <div class="post-title"><a href="#">Vision Quest</a></div>
+        </div>
+      </div>
+
+      <aside class="content-box countdowns">
+        <h2>⏳ Countdowns</h2>
+        <h3>📺 Series</h3>
         <ul>
           <li>Wonder Man — <span>Here soon</span></li>
           <li>Daredevil: Born Again — <span>Next year</span></li>
           <li>Vision Quest — <span>Coming 2026</span></li>
         </ul>
+      </aside>
+    </div>
 
+    <!-- Animated Projects + Countdowns -->
+    <div class="section-pair">
+      <div class="content-box">
+        <h2>🎨 Upcoming Animated Projects</h2>
+        <div class="post">
+          <div class="date-tag">Sept 24, 2025</div>
+          <div class="post-title"><a href="#">Marvel Zombies (Animated Series)</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">2026</div>
+          <div class="post-title"><a href="#">Your Friendly Neighborhood Spider-Man — Season 2</a></div>
+        </div>
+        <div class="post">
+          <div class="date-tag">2026</div>
+          <div class="post-title"><a href="#">X-Men ’97 — Season 2</a></div>
+        </div>
+      </div>
+
+      <aside class="content-box countdowns">
+        <h2>⏳ Countdowns</h2>
         <h3>🎨 Animated</h3>
         <ul>
           <li>Marvel Zombies — <span>The time is here</span></li>
           <li>Spider-Man S2 — <span>2026</span></li>
           <li>X-Men ’97 S2 — <span>2026</span></li>
         </ul>
-      </div>
-    </aside>
+      </aside>
+    </div>
   </main>
 
   <footer>
