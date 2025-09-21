@@ -7,13 +7,12 @@
   <style>
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #000; /* darkest black */
+      background: #000; /* full black */
       color: #eee;
       margin: 0;
       padding: 0;
       line-height: 1.6;
     }
-
     header {
       text-align: center;
       padding: 40px 20px 20px;
@@ -40,108 +39,106 @@
     }
 
     main {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 20px;
-    }
-
-    /* Each pair of sections (Movies vs Countdowns, etc.) */
-    .section-pair {
       display: flex;
       gap: 30px;
-      margin-bottom: 40px;
-      align-items: stretch; /* force equal height */
+      align-items: flex-start;
     }
 
-    /* Left & Right Boxes */
-    .content-box {
-      flex: 1;
+    .grid-section {
+      flex: 2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(255,82,82,0.5);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .card-info {
+      padding: 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title {
+      color: #fff;
+      font-weight: bold;
+      margin: 8px 0 5px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .card-date {
+      color: #ccc;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Sidebar / countdowns */
+    .sidebar {
+      flex: 1;
+      max-width: 300px;
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
       background: #111;
       border: 1px solid #222;
       border-radius: 10px;
       padding: 20px;
     }
-
-    /* Section Titles */
-    h2 {
-      font-size: 1.4rem;
-      font-weight: bold;
+    .sidebar h2 {
       color: #ff5252;
-      margin: 0 0 20px;
-      text-transform: uppercase;
-      border-bottom: 2px solid #222;
-      padding-bottom: 5px;
-    }
-
-    /* Left Column Posts */
-    .post {
-      background: #1a1a1a;
-      border: 1px solid #222;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 18px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.5);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .post:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 15px rgba(255,82,82,0.4);
-    }
-
-    .date-tag {
-      display: inline-block;
-      background: #222;
-      color: #ff5252;
-      font-size: 0.8rem;
-      padding: 3px 8px;
-      border-radius: 20px;
-      margin-bottom: 6px;
-    }
-
-    .post-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-    .post-title a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .post-title a:hover {
-      color: #ff5252;
-    }
-
-    /* Sidebar Countdown */
-    .countdowns h2 {
-      border: none;
-      color: #ff5252;
-      margin-top: 0;
-    }
-    .countdowns h3 {
-      margin: 15px 0 10px;
-      color: #fff;
-      font-size: 1.1rem;
+      margin: 0 0 15px;
+      font-size: 1.3rem;
+      text-align: center;
       border-bottom: 1px solid #222;
       padding-bottom: 5px;
     }
-    .countdowns ul {
+    .sidebar-section {
+      margin-bottom: 20px;
+    }
+    .sidebar-section h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .sidebar-section ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    .countdowns li {
-      margin: 8px 0;
+    .sidebar-section li {
+      margin: 6px 0;
       color: #ccc;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
-    .countdowns li span {
+    .sidebar-section li span {
       color: #ff5252;
       font-weight: bold;
     }
-    .countdowns li:hover {
+    .sidebar-section li:hover {
       color: #fff;
     }
 
@@ -155,8 +152,15 @@
     }
 
     @media (max-width: 900px) {
-      .section-pair {
+      main {
         flex-direction: column;
+      }
+      .sidebar {
+        max-width: 100%;
+        position: relative;
+      }
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       }
     }
   </style>
@@ -169,102 +173,87 @@
   </header>
 
   <main>
-    <!-- Movies + Countdowns -->
-    <div class="section-pair">
-      <div class="content-box">
-        <h2>🎬 Upcoming Movies</h2>
-        <div class="post">
-          <div class="date-tag">July 31, 2026</div>
-          <div class="post-title"><a href="#">Spider-Man: Brand New Day</a></div>
+    <div class="grid-section">
+      <h2>🎬 Upcoming Movies</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://www.marvel.com/movies/spider-man-brand-new-day/image-poster.jpg" alt="Spider-Man: Brand New Day poster">
+          <div class="card-info">
+            <div class="card-title">Spider-Man: Brand New Day</div>
+            <div class="card-date">July 31, 2026</div>
+          </div>
         </div>
-        <div class="post">
-          <div class="date-tag">Dec 18, 2026</div>
-          <div class="post-title"><a href="#">Avengers: Doomsday</a></div>
+        <div class="card">
+          <img src="https://www.marvel.com/movies/avengers-doomsday/image-poster.jpg" alt="Avengers: Doomsday poster">
+          <div class="card-info">
+            <div class="card-title">Avengers: Doomsday</div>
+            <div class="card-date">Dec 18, 2026</div>
+          </div>
         </div>
-        <div class="post">
-          <div class="date-tag">Dec 17, 2027</div>
-          <div class="post-title"><a href="#">Avengers: Secret Wars</a></div>
+        <div class="card">
+          <img src="https://www.marvel.com/movies/avengers-secretwars/image-poster.jpg" alt="Avengers: Secret Wars poster">
+          <div class="card-info">
+            <div class="card-title">Avengers: Secret Wars</div>
+            <div class="card-date">Dec 17, 2027</div>
+          </div>
         </div>
-        <div class="post">
-          <div class="date-tag">TBA</div>
-          <div class="post-title"><a href="#">Marvel Studios X-Men</a></div>
-        </div>
-        <div class="post">
-          <div class="date-tag">TBA</div>
-          <div class="post-title"><a href="#">Blade</a></div>
-        </div>
+        <!-- add more cards for X-Men, Blade etc -->
       </div>
 
-      <aside class="content-box countdowns">
-        <h2>⏳ Countdowns</h2>
+      <h2>📺 Upcoming Disney+ Series</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://www.marvel.com/tv-shows/marvel-zombies/image-poster.jpg" alt="Marvel Zombies poster">
+          <div class="card-info">
+            <div class="card-title">Marvel Zombies</div>
+            <div class="card-date">Sept 24, 2025</div>
+          </div>
+        </div>
+        <!-- more series cards -->
+      </div>
+
+      <h2>🎨 Upcoming Animated Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://www.marvel.com/movies/x-men-97/image-poster.jpg" alt="X-Men ’97 Season 2 poster">
+          <div class="card-info">
+            <div class="card-title">X-Men ’97 — Season 2</div>
+            <div class="card-date">2026</div>
+          </div>
+        </div>
+        <!-- more animated cards -->
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <h2>⏳ Countdowns</h2>
+
+      <div class="sidebar-section">
         <h3>🎬 Movies</h3>
         <ul>
           <li>Spider-Man: Brand New Day — <span>674 days left</span></li>
           <li>Avengers: Doomsday — <span>820 days left</span></li>
           <li>Avengers: Secret Wars — <span>1184 days left</span></li>
-          <li>Marvel Studios X-Men — <span>TBA</span></li>
-          <li>Blade — <span>TBA</span></li>
         </ul>
-      </aside>
-    </div>
-
-    <!-- Disney+ Series + Countdowns -->
-    <div class="section-pair">
-      <div class="content-box">
-        <h2>📺 Upcoming Disney+ Series</h2>
-        <div class="post">
-          <div class="date-tag">Dec 2025</div>
-          <div class="post-title"><a href="#">Wonder Man</a></div>
-        </div>
-        <div class="post">
-          <div class="date-tag">2025</div>
-          <div class="post-title"><a href="#">Daredevil: Born Again</a></div>
-        </div>
-        <div class="post">
-          <div class="date-tag">2026</div>
-          <div class="post-title"><a href="#">Vision Quest</a></div>
-        </div>
       </div>
 
-      <aside class="content-box countdowns">
-        <h2>⏳ Countdowns</h2>
+      <div class="sidebar-section">
         <h3>📺 Series</h3>
         <ul>
-          <li>Wonder Man — <span>Here soon</span></li>
-          <li>Daredevil: Born Again — <span>Next year</span></li>
-          <li>Vision Quest — <span>Coming 2026</span></li>
+          <li>Marvel Zombies — <span>The time is here</span></li>
+          <!-- more countdowns -->
         </ul>
-      </aside>
-    </div>
-
-    <!-- Animated Projects + Countdowns -->
-    <div class="section-pair">
-      <div class="content-box">
-        <h2>🎨 Upcoming Animated Projects</h2>
-        <div class="post">
-          <div class="date-tag">Sept 24, 2025</div>
-          <div class="post-title"><a href="#">Marvel Zombies (Animated Series)</a></div>
-        </div>
-        <div class="post">
-          <div class="date-tag">2026</div>
-          <div class="post-title"><a href="#">Your Friendly Neighborhood Spider-Man — Season 2</a></div>
-        </div>
-        <div class="post">
-          <div class="date-tag">2026</div>
-          <div class="post-title"><a href="#">X-Men ’97 — Season 2</a></div>
-        </div>
       </div>
 
-      <aside class="content-box countdowns">
-        <h2>⏳ Countdowns</h2>
+      <div class="sidebar-section">
         <h3>🎨 Animated</h3>
         <ul>
-          <li>Marvel Zombies — <span>The time is here</span></li>
-          <li>Spider-Man S2 — <span>2026</span></li>
-          <li>X-Men ’97 S2 — <span>2026</span></li>
+          <li>X-Men ’97 — <span>2026</span></li>
+          <!-- more animated countdowns -->
         </ul>
-      </aside>
-    </div>
+      </div>
+
+    </aside>
   </main>
 
   <footer>
