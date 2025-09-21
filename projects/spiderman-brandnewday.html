@@ -49,6 +49,7 @@
       gap: 8px 20px;
       margin-top: 10px;
       padding-left: 0;
+      overflow: hidden;
     }
     .cast-list div {
       background: #1a1a1a;
@@ -125,24 +126,11 @@
       <div><strong>Liza Colón-Zayas</strong> — <em>TBA</em></div>
       <div><strong>Zendaya</strong> — <em>MJ</em></div>
       <div><strong>Jacob Batalon</strong> — <em>Ned Leeds</em></div>
-      <div><strong>Liza Colón-Zayas</strong> — <em>TBA</em></div>
-      <div><strong>Zendaya</strong> — <em>MJ</em></div>
-      <div><strong>Jacob Batalon</strong> — <em>Ned Leeds</em></div>
-      <div><strong>Liza Colón-Zayas</strong> — <em>TBA</em></div>
-      <div><strong>Zendaya</strong> — <em>MJ</em></div>
-      <div><strong>Jacob Batalon</strong> — <em>Ned Leeds</em></div>
-      <div><strong>Liza Colón-Zayas</strong> — <em>TBA</em></div>
-      <div><strong>Zendaya</strong> — <em>MJ</em></div>
-      <div><strong>Jacob Batalon</strong> — <em>Ned Leeds</em></div>
-      <div><strong>Liza Colón-Zayas</strong> — <em>TBA</em></div>
-      <div><strong>Zendaya</strong> — <em>MJ</em></div>
-      <div><strong>Jacob Batalon</strong> — <em>Ned Leeds</em></div>
     </div>
     <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
     <h2>Latest News</h2>
     <div style="display: flex; flex-direction: column; gap: 15px;">
-      <!-- Example news card -->
       <a href="https://x.com/MCUFilmNews/status/1966201322417655977" target="_blank" style="text-decoration: none;">
         <div style="display:flex;align-items:center;gap:15px;background:#1a1a1a;padding:15px;border-radius:15px;border:2px solid #ff5252;transition:transform 0.2s,box-shadow 0.2s;"
           onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
@@ -153,10 +141,8 @@
           </div>
         </div>
       </a>
-      <!-- Add other cards here -->
     </div>
 
-    <!-- Back link -->
     <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
   </main>
 
@@ -165,57 +151,54 @@
     // Countdown
     const releaseDate = new Date("July 31, 2026 00:00:00").getTime();
     const countdownEl = document.getElementById("countdown");
-
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = releaseDate - now;
-
-      if (distance < 0) {
-        countdownEl.innerHTML = "Now in theaters!";
-        return;
-      }
-
+      if (distance < 0) { countdownEl.innerHTML = "Now in theaters!"; return; }
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
-
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Toggle cast list (always show 2 rows when collapsed)
-    function toggleCast() {
-      const castList = document.getElementById("cast");
-      const btn = document.querySelector(".toggle-btn");
-      const castItems = castList.querySelectorAll("div");
+    // === DOOMSDAY STYLE CAST TOGGLE ===
+    const castList = document.getElementById("cast");
+    const castItems = castList.querySelectorAll("div");
+    const btn = document.querySelector(".toggle-btn");
 
+    // Hide beyond first 6 initially
+    castItems.forEach((div, index) => { if (index >= 6) div.classList.add("hidden"); });
+
+    // Animate first 6 on load
+    for (let i = 0; i < 6 && i < castItems.length; i++) {
+      castItems[i].style.opacity = 0;
+      castItems[i].style.transform = "translateY(20px)";
+      setTimeout(() => {
+        castItems[i].style.opacity = 1;
+        castItems[i].style.transform = "translateY(0)";
+      }, i * 100);
+    }
+
+    function toggleCast() {
       if (castList.classList.contains("expanded")) {
-        // Collapse back to 2
-        castItems.forEach((div, index) => {
-          if (index >= 6) div.classList.add("hidden");
-        });
+        // Collapse back to 6 with stagger (reverse)
+        for (let i = castItems.length - 1; i >= 6; i--) {
+          setTimeout(() => { castItems[i].classList.add("hidden"); }, (castItems.length - 1 - i) * 50);
+        }
         castList.classList.remove("expanded");
         btn.textContent = "Show Full Cast";
       } else {
-        // Expand and show all
+        // Expand with stagger
         castList.classList.add("expanded");
-        castItems.forEach(div => div.classList.remove("hidden"));
+        for (let i = 6; i < castItems.length; i++) {
+          setTimeout(() => { castItems[i].classList.remove("hidden"); }, (i - 6) * 50);
+        }
         btn.textContent = "Hide Cast";
       }
     }
-
-    // On load → hide everything beyond first 2
-    const castList = document.getElementById("cast");
-    const castItems = castList.querySelectorAll("div");
-    castItems.forEach((div, index) => {
-      if (index >= 6) div.classList.add("hidden");
-    });
   </script>
 </body>
 </html>
-
-
-
