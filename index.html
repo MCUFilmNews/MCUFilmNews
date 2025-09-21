@@ -7,22 +7,11 @@
   <style>
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at top, #111 0%, #000 100%);
+      background: linear-gradient(180deg, #0a0a0a 0%, #111 40%, #1a1a1a 100%);
       color: #eee;
       margin: 0;
       padding: 0;
       line-height: 1.6;
-    }
-
-    a {
-      color: #ff5252;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.2s, transform 0.2s;
-    }
-    a:hover {
-      color: #fff;
-      transform: scale(1.05);
     }
 
     header {
@@ -32,9 +21,9 @@
     header h1 {
       font-size: 3rem;
       font-weight: 900;
-      letter-spacing: 3px;
-      margin: 0;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      margin: 0;
       background: linear-gradient(90deg, #ff5252, #fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -45,172 +34,165 @@
       color: #bbb;
     }
     .header-line {
-      height: 4px;
+      height: 3px;
       background-color: #ff5252;
-      width: 100px;
-      margin: 15px auto 0 auto;
+      width: 80px;
+      margin: 15px auto;
       border-radius: 2px;
     }
 
-    .intro {
-      max-width: 700px;
-      margin: 20px auto 40px auto;
-      font-size: 1.05rem;
-      color: #ccc;
-      text-align: center;
-    }
-
     main {
-      max-width: 1200px;
-      margin: 0 auto 50px auto;
+      max-width: 750px;
+      margin: 0 auto;
       padding: 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
     }
 
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Section Titles */
+    /* Section Title */
     h2 {
-      display: flex;
-      align-items: center;
-      border-left: 4px solid #ff5252;
-      padding-left: 10px;
-      margin-top: 40px;
-      color: #fff;
-      font-size: 1.5rem;
-      animation: slideIn 0.6s ease;
-    }
-
-    @keyframes slideIn {
-      from {opacity: 0; transform: translateX(-30px);}
-      to {opacity: 1; transform: translateX(0);}
-    }
-
-    .section-icon {
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      line-height: 28px;
-      text-align: center;
-      background-color: #ff5252;
-      border-radius: 50%;
-      color: #111;
+      font-size: 1.4rem;
       font-weight: bold;
-      margin-right: 8px;
+      color: #ff5252;
+      margin: 40px 0 20px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #222;
+      padding-bottom: 5px;
     }
 
-    /* Left Column Cards */
-    .card {
-      background-color: #1c1c1c;
-      padding: 15px 20px;
+    /* Tumblr-style Post */
+    .post {
+      background: #141414;
+      border: 1px solid #222;
       border-radius: 10px;
-      margin: 12px 0;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .card:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 6px 18px rgba(255,82,82,0.4);
+    .post:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(255,82,82,0.4);
     }
 
-    /* Right Column (Quick List) */
-    .quick-list {
-      background: #151515;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    .date-tag {
+      display: inline-block;
+      background: #222;
+      color: #ff5252;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-bottom: 8px;
     }
-    .quick-list h3 {
-      font-size: 1.2rem;
-      margin: 20px 0 10px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 6px;
+
+    .post-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 5px 0 12px;
+    }
+
+    .post-title a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .post-title a:hover {
       color: #ff5252;
     }
-    .quick-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+
+    .notes {
+      font-size: 0.8rem;
+      color: #888;
+      border-top: 1px solid #222;
+      padding-top: 8px;
+      margin-top: 12px;
+      text-align: right;
     }
-    .quick-list li {
-      margin: 8px 0;
-      padding-left: 5px;
-      transition: color 0.2s, transform 0.2s;
+    .notes span {
+      margin-left: 12px;
+      cursor: pointer;
+      transition: color 0.2s;
     }
-    .quick-list li:hover {
-      color: #fff;
-      transform: translateX(5px);
+    .notes span:hover {
+      color: #ff5252;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px 20px;
       font-size: 0.9rem;
       color: #aaa;
-      border-top: 1px solid #333;
+      border-top: 1px solid #222;
+      margin-top: 50px;
     }
   </style>
 </head>
-
 <body>
   <header>
-    <h1>MCU FILM NEWS</h1>
+    <h1>MCU Film News</h1>
     <div class="header-line"></div>
-    <p class="intro">Your #1 Source for Marvel News, Movies, TV Shows, Games, and Comics!</p>
+    <p>Your #1 Source for Marvel News, Movies, TV Shows, Games, and Comics!</p>
   </header>
 
   <main>
-    <!-- Left Column -->
-    <div>
-      <h2><span class="section-icon">🎬</span> Upcoming Movies</h2>
-      <div class="card"><p><strong>July 31, 2026:</strong> <a href="#">Spider-Man: Brand New Day</a></p></div>
-      <div class="card"><p><strong>Dec 18, 2026:</strong> <a href="#">Avengers: Doomsday</a></p></div>
-      <div class="card"><p><strong>Dec 17, 2027:</strong> <a href="#">Avengers: Secret Wars</a></p></div>
-      <div class="card"><p><strong>TBA:</strong> <a href="#">Marvel Studios X-Men</a></p></div>
-      <div class="card"><p><strong>TBA:</strong> <a href="#">Blade</a></p></div>
-
-      <h2><span class="section-icon">📺</span> Upcoming Disney+ Series</h2>
-      <div class="card"><p><strong>Dec 2025:</strong> <a href="#">Wonder Man</a></p></div>
-      <div class="card"><p><strong>2025:</strong> <a href="#">Daredevil: Born Again</a></p></div>
-      <div class="card"><p><strong>2026:</strong> <a href="#">Vision Quest</a></p></div>
-
-      <h2><span class="section-icon">🎨</span> Upcoming Animated Projects</h2>
-      <div class="card"><p><strong>Sept 24, 2025:</strong> <a href="#">Marvel Zombies (Animated Series)</a></p></div>
-      <div class="card"><p><strong>2026:</strong> <a href="#">Your Friendly Neighborhood Spider-Man — Season 2</a></p></div>
-      <div class="card"><p><strong>2026:</strong> <a href="#">X-Men ’97 — Season 2</a></p></div>
+    <h2>🎬 Upcoming Movies</h2>
+    <div class="post">
+      <div class="date-tag">July 31, 2026</div>
+      <div class="post-title"><a href="#">Spider-Man: Brand New Day</a></div>
+      <div class="notes">120 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">Dec 18, 2026</div>
+      <div class="post-title"><a href="#">Avengers: Doomsday</a></div>
+      <div class="notes">240 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">Dec 17, 2027</div>
+      <div class="post-title"><a href="#">Avengers: Secret Wars</a></div>
+      <div class="notes">370 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">TBA</div>
+      <div class="post-title"><a href="#">Marvel Studios X-Men</a></div>
+      <div class="notes">500 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">TBA</div>
+      <div class="post-title"><a href="#">Blade</a></div>
+      <div class="notes">420 notes <span>♥</span> <span>↻</span></div>
     </div>
 
-    <!-- Right Column (Quick List) -->
-    <aside class="quick-list">
-      <h3>🎬 Movies</h3>
-      <ul>
-        <li>Spider-Man: Brand New Day</li>
-        <li>Avengers: Doomsday</li>
-        <li>Avengers: Secret Wars</li>
-        <li>Marvel Studios X-Men</li>
-        <li>Blade</li>
-      </ul>
+    <h2>📺 Upcoming Disney+ Series</h2>
+    <div class="post">
+      <div class="date-tag">Dec 2025</div>
+      <div class="post-title"><a href="#">Wonder Man</a></div>
+      <div class="notes">310 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">2025</div>
+      <div class="post-title"><a href="#">Daredevil: Born Again</a></div>
+      <div class="notes">690 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">2026</div>
+      <div class="post-title"><a href="#">Vision Quest</a></div>
+      <div class="notes">155 notes <span>♥</span> <span>↻</span></div>
+    </div>
 
-      <h3>📺 Disney+ Series</h3>
-      <ul>
-        <li>Wonder Man</li>
-        <li>Daredevil: Born Again</li>
-        <li>Vision Quest</li>
-      </ul>
-
-      <h3>🎨 Animated Projects</h3>
-      <ul>
-        <li>Marvel Zombies</li>
-        <li>Your Friendly Neighborhood Spider-Man — S2</li>
-        <li>X-Men ’97 — S2</li>
-      </ul>
-    </aside>
+    <h2>🎨 Upcoming Animated Projects</h2>
+    <div class="post">
+      <div class="date-tag">Sept 24, 2025</div>
+      <div class="post-title"><a href="#">Marvel Zombies (Animated Series)</a></div>
+      <div class="notes">800 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">2026</div>
+      <div class="post-title"><a href="#">Your Friendly Neighborhood Spider-Man — Season 2</a></div>
+      <div class="notes">230 notes <span>♥</span> <span>↻</span></div>
+    </div>
+    <div class="post">
+      <div class="date-tag">2026</div>
+      <div class="post-title"><a href="#">X-Men ’97 — Season 2</a></div>
+      <div class="notes">410 notes <span>♥</span> <span>↻</span></div>
+    </div>
   </main>
 
   <footer>
