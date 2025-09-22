@@ -15,32 +15,50 @@
     }
     header { text-align:center; margin-top:20px; }
     header h1 {
-      font-size: 3rem;         
+      font-size: 3rem;
       font-weight: 800;
-      letter-spacing: 3px;     
+      letter-spacing: 3px;
       margin: 0;
-      text-transform: uppercase; 
+      text-transform: uppercase;
     }
     .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
 
-    /* Marvel Zombies-style countdown box */
-    #countdown-card {
-      margin: 20px auto;
-      background: #1a1a1a;
-      border: 3px solid #ff5252;
-      border-radius: 15px;
-      padding: 20px 40px;
-      display: inline-block;
-      font-size: 2rem;
-      font-weight: 800;
-      color: #ff5252;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(255,82,82,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+    /* Marvel Zombies-style countdown */
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
     }
-    #countdown-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(255,82,82,0.6);
+    .time-box {
+      background: #1a1a1a;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 2px solid #ff5252;
+      text-align: center;
+      min-width: 60px;
+    }
+    .time-box .number {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ff5252;
+    }
+    .time-box .label {
+      font-size: 0.8rem;
+      color: #bbb;
+      margin-top: 3px;
+      display: block;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 5px #00a3e0; }
+      50% { transform: scale(1.05); text-shadow: 0 0 12px #00a3e0; }
+    }
+    .pulse {
+      animation: pulse 1s infinite;
+      color: #00a3e0 !important;
+      font-size: 1.6rem;
+      font-weight: 800;
     }
 
     main { max-width:900px; margin:30px auto; }
@@ -73,8 +91,7 @@
     .cast-list div.hidden {
       max-height: 0;
       opacity: 0;
-      padding-top: 0;
-      padding-bottom: 0;
+      padding: 0;
       margin: 0;
       transform: translateY(-20px);
       transition: all 0.5s ease;
@@ -111,135 +128,143 @@
   </style>
 </head>
 <body>
-<header>
-  <h1>Avengers: Doomsday</h1>
-  <div class="meta">Release Date: December 18, 2026</div>
-  <div id="countdown-card"></div>
-</header>
+  <header>
+    <h1>Avengers: Doomsday</h1>
+    <div class="meta">Release Date: December 18, 2026</div>
+    <div id="countdown"></div>
+  </header>
 
-<main>
-<h2>Synopsis</h2>
-<p>Doctor Doom has officially arrived in the MCU. This villain, a master of cutting-edge science and powerful magic, will unleash a cascading crisis across the entire multiverse.</p>
+  <main>
+    <h2>Synopsis</h2>
+    <p>Doctor Doom has officially arrived in the MCU. This villain, a master of cutting-edge science and powerful magic, will unleash a cascading crisis across the entire multiverse.</p>
 
-<h2>Cast & Crew</h2>
-<ul>
-  <li><strong>Director:</strong> The Russo Brothers</li>
-  <li><strong>Writers:</strong> Stephen McFeely and Michael Waldron</li>
-</ul>
+    <h2>Cast & Crew</h2>
+    <ul>
+      <li><strong>Director:</strong> The Russo Brothers</li>
+      <li><strong>Writers:</strong> Stephen McFeely and Michael Waldron</li>
+    </ul>
 
-<div id="cast" class="cast-list">
-  <div><strong>Robert Downey Jr.</strong> — <em>Doctor Doom</em></div>
-  <div><strong>Chris Hemsworth</strong> — <em>Thor</em></div>
-  <div><strong>Chris Evans</strong> — <em>Steve Rogers</em></div>
-  <div><strong>Anthony Mackie</strong> — <em>Captain America</em></div>
-  <div><strong>Sebastian Stan</strong> — <em>Winter Soldier</em></div>
-  <div><strong>Tom Hiddleston</strong> — <em>Loki</em></div>
-  <div><strong>Simu Liu</strong> — <em>Shang-Chi</em></div>
-  <div><strong>Letitia Wright</strong> — <em>Black Panther</em></div>
-  <div><strong>Paul Rudd</strong> — <em>Ant-Man</em></div>
-  <div><strong>Florence Pugh</strong> — <em>Yelena Belova</em></div>
-  <div><strong>Vanessa Kirby</strong> — <em>Invisible Woman</em></div>
-  <div><strong>Pedro Pascal</strong> — <em>Mr. Fantastic</em></div>
-  <div><strong>Ebon Moss-Bachrach</strong> — <em>The Thing</em></div>
-  <div><strong>Joseph Quinn</strong> — <em>Human Torch</em></div>
-  <div><strong>Patrick Stewart</strong> — <em>Professor X</em></div>
-  <div><strong>Ian McKellen</strong> — <em>Magneto</em></div>
-  <div><strong>Kelsey Grammer</strong> — <em>Beast</em></div>
-  <div><strong>Lewis Pullman</strong> — <em>Sentry</em></div>
-  <div><strong>Danny Ramirez</strong> — <em>Falcon</em></div>
-  <div><strong>David Harbour</strong> — <em>Red Guardian</em></div>
-  <div><strong>Benedict Cumberbatch</strong> — <em>Doctor Strange</em></div>
-  <div><strong>Wyatt Russell</strong> — <em>U.S. Agent</em></div>
-  <div><strong>Tenoch Huerta</strong> — <em>Namor</em></div>
-  <div><strong>Winston Duke</strong> — <em>M’Baku</em></div>
-  <div><strong>Hannah John-Kamen</strong> — <em>Ghost</em></div>
-  <div><strong>Alan Cumming</strong> — <em>Nightcrawler</em></div>
-  <div><strong>Rebecca Romijn</strong> — <em>Mystique</em></div>
-  <div><strong>James Marsden</strong> — <em>Cyclops</em></div>
-  <div><strong>Channing Tatum</strong> — <em>Gambit</em></div>
-  <div><strong>Hayley Atwell</strong> — <em>Peggy Carter</em></div>
-</div>
-<button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
-
-<h2>Latest News</h2>
-<div style="display: flex; flex-direction: column; gap: 15px;">
-  <a href="https://x.com/MCUFilmNews/status/1969107129962250473" target="_blank" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; gap: 15px; background: #1a1a1a; padding: 15px; border-radius: 15px; border: 2px solid #ff5252; transition: transform 0.2s, box-shadow 0.2s;"
-         onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-         onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://pbs.twimg.com/media/G1OWl6fbQAAdf7c?format=jpg&name=large" alt="Avengers Doomsday" style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-      <div style="color:#eee;">
-        <strong style="font-size:1.1rem;">‘AVENGERS: DOOMSDAY’ has officially wrapped filming.</strong>
-        <p style="margin:5px 0 0; color:#ccc;">In theaters on December 18, 2026.</p>
-      </div>
+    <div id="cast" class="cast-list">
+      <div><strong>Robert Downey Jr.</strong> — <em>Doctor Doom</em></div>
+      <div><strong>Chris Hemsworth</strong> — <em>Thor</em></div>
+      <div><strong>Chris Evans</strong> — <em>Steve Rogers</em></div>
+      <div><strong>Anthony Mackie</strong> — <em>Captain America</em></div>
+      <div><strong>Sebastian Stan</strong> — <em>Winter Soldier</em></div>
+      <div><strong>Tom Hiddleston</strong> — <em>Loki</em></div>
+      <div><strong>Simu Liu</strong> — <em>Shang-Chi</em></div>
+      <div><strong>Letitia Wright</strong> — <em>Black Panther</em></div>
+      <div><strong>Paul Rudd</strong> — <em>Ant-Man</em></div>
+      <div><strong>Florence Pugh</strong> — <em>Yelena Belova</em></div>
+      <div><strong>Vanessa Kirby</strong> — <em>Invisible Woman</em></div>
+      <div><strong>Pedro Pascal</strong> — <em>Mr. Fantastic</em></div>
+      <div><strong>Ebon Moss-Bachrach</strong> — <em>The Thing</em></div>
+      <div><strong>Joseph Quinn</strong> — <em>Human Torch</em></div>
+      <div><strong>Patrick Stewart</strong> — <em>Professor X</em></div>
+      <div><strong>Ian McKellen</strong> — <em>Magneto</em></div>
+      <div><strong>Kelsey Grammer</strong> — <em>Beast</em></div>
+      <div><strong>Lewis Pullman</strong> — <em>Sentry</em></div>
+      <div><strong>Danny Ramirez</strong> — <em>Falcon</em></div>
+      <div><strong>David Harbour</strong> — <em>Red Guardian</em></div>
+      <div><strong>Benedict Cumberbatch</strong> — <em>Doctor Strange</em></div>
+      <div><strong>Wyatt Russell</strong> — <em>U.S. Agent</em></div>
+      <div><strong>Tenoch Huerta</strong> — <em>Namor</em></div>
+      <div><strong>Winston Duke</strong> — <em>M’Baku</em></div>
+      <div><strong>Hannah John-Kamen</strong> — <em>Ghost</em></div>
+      <div><strong>Alan Cumming</strong> — <em>Nightcrawler</em></div>
+      <div><strong>Rebecca Romijn</strong> — <em>Mystique</em></div>
+      <div><strong>James Marsden</strong> — <em>Cyclops</em></div>
+      <div><strong>Channing Tatum</strong> — <em>Gambit</em></div>
+      <div><strong>Hayley Atwell</strong> — <em>Peggy Carter</em></div>
     </div>
-  </a>
+    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
-  <a href="https://x.com/MCUFilmNews/status/1969169362222276758" target="_blank" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; gap: 15px; background: #1a1a1a; padding: 15px; border-radius: 15px; border: 2px solid #ff5252; transition: transform 0.2s, box-shadow 0.2s;"
-         onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-         onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://pbs.twimg.com/media/G1PlGUrbQAEtZow?format=jpg&name=900x900" alt="Avengers Doomsday" style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-      <div style="color:#eee;">
-        <strong style="font-size:1.1rem;">‘AVENGERS: DOOMSDAY’ wrapped principal photography in the U.K. today.</strong>
-        <p style="margin:5px 0 0; color:#ccc;">The film will also undergo additional photography later in production.</p>
-      </div>
+    <h2>Latest News</h2>
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <!-- Card 1 -->
+      <a href="https://x.com/MCUFilmNews/status/1969107129962250473" target="_blank" style="text-decoration: none;">
+        <div style=" display: flex; align-items: center; gap: 15px; background: #1a1a1a; padding: 15px; border-radius: 15px; border: 2px solid #ff5252; transition: transform 0.2s, box-shadow 0.2s; " onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+          <img src="https://pbs.twimg.com/media/G1OWl6fbQAAdf7c?format=jpg&name=large" alt="Avengers Doomsday" style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+          <div style="color:#eee;">
+            <strong style="font-size:1.1rem;">‘AVENGERS: DOOMSDAY’ has officially wrapped filming.</strong>
+            <p style="margin:5px 0 0; color:#ccc;">In theaters on December 18, 2026.</p>
+          </div>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a href="https://x.com/MCUFilmNews/status/1969169362222276758" target="_blank" style="text-decoration: none;">
+        <div style=" display: flex; align-items: center; gap: 15px; background: #1a1a1a; padding: 15px; border-radius: 15px; border: 2px solid #ff5252; transition: transform 0.2s, box-shadow 0.2s; " onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+          <img src="https://pbs.twimg.com/media/G1PlGUrbQAEtZow?format=jpg&name=900x900" alt="Avengers Doomsday" style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+          <div style="color:#eee;">
+            <strong style="font-size:1.1rem;">‘AVENGERS: DOOMSDAY’ wrapped principal photography in the U.K. today.</strong>
+            <p style="margin:5px 0 0; color:#ccc;">The film will also undergo additional photography later in production.</p>
+          </div>
+        </div>
+      </a>
     </div>
-  </a>
-</div>
 
-<a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
-</main>
+    <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
+  </main>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script>
-// Cast toggle logic
-const castDivs = document.querySelectorAll("#cast div");
-const half = Math.ceil(castDivs.length / 2);
+  <footer>
+    <p>© 2025 Fan-made site, not affiliated with Marvel Studios</p>
+  </footer>
+  <div class="watermark">MCU FILM NEWS</div>
 
-for (let i = half; i < castDivs.length; i++) castDivs[i].classList.add("hidden");
-for (let i = 0; i < half; i++) {
-  castDivs[i].style.opacity = 0;
-  castDivs[i].style.transform = 'translateY(20px)';
-  setTimeout(() => { castDivs[i].style.opacity = 1; castDivs[i].style.transform = 'translateY(0)'; }, i*100);
-}
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    // Cast animation and toggle
+    const castDivs = document.querySelectorAll("#cast div");
+    const half = Math.ceil(castDivs.length / 2);
+    for (let i = half; i < castDivs.length; i++) { castDivs[i].classList.add("hidden"); }
+    for (let i = 0; i < half; i++) {
+      castDivs[i].style.opacity = 0;
+      castDivs[i].style.transform = 'translateY(20px)';
+      setTimeout(() => { castDivs[i].style.opacity = 1; castDivs[i].style.transform = 'translateY(0)'; }, i * 100);
+    }
+    let isVisible = false;
+    function toggleCast() {
+      const btn = document.querySelector(".toggle-btn");
+      isVisible = !isVisible;
+      if (isVisible) {
+        for (let i = half; i < castDivs.length; i++) {
+          setTimeout(() => { castDivs[i].classList.remove("hidden"); }, (i - half) * 50);
+        }
+        btn.textContent = "Hide Cast";
+      } else {
+        for (let i = half; i < castDivs.length; i++) {
+          setTimeout(() => { castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden"); }, (i - half) * 50);
+        }
+        btn.textContent = "Show Full Cast";
+      }
+    }
 
-let isVisible = false;
-function toggleCast() {
-  const btn = document.querySelector(".toggle-btn");
-  isVisible = !isVisible;
-  if (isVisible) {
-    for (let i = half; i < castDivs.length; i++) setTimeout(() => { castDivs[i].classList.remove("hidden"); }, (i-half)*50);
-    btn.textContent = "Hide Cast";
-  } else {
-    for (let i = half; i < castDivs.length; i++) setTimeout(() => { castDivs[castDivs.length-1-(i-half)].classList.add("hidden"); }, (i-half)*50);
-    btn.textContent = "Show Full Cast";
-  }
-}
+    // Marvel Zombies countdown for Avengers: Doomsday
+    const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
 
-// Marvel Zombies-style countdown
-const countdownElement = document.getElementById("countdown-card");
-const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = releaseDate - now;
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = releaseDate - now;
+      if (distance <= 0) {
+        countdownEl.innerHTML = '<div class="time-box pulse">Now Streaming on Disney+</div>';
+        return;
+      }
 
-  if (distance < 0) {
-    countdownElement.innerHTML = "Released!";
-    return;
-  }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.innerHTML =
+        `<div class="time-box"><span class="number">${days}</span><span class="label">Days</span></div>` +
+        `<div class="time-box"><span class="number">${hours}</span><span class="label">Hours</span></div>` +
+        `<div class="time-box"><span class="number">${minutes}</span><span class="label">Minutes</span></div>` +
+        `<div class="time-box"><span class="number">${seconds}</span><span class="label">Seconds</span></div>`;
+    }
 
-  countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
