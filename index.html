@@ -23,7 +23,6 @@
       --text-subtle-dark: #666;
     }
 
-    /* Dark theme */
     [data-theme="dark"] {
       --bg: var(--bg-dark);
       --bg-card: var(--bg-card-dark);
@@ -33,7 +32,6 @@
       --text-subtle: var(--text-subtle);
     }
 
-    /* Light theme */
     [data-theme="light"] {
       --bg: var(--bg-light);
       --bg-card: var(--bg-card-light);
@@ -194,11 +192,11 @@
       line-height: 28px;
     }
 
-    /* CARD GRID FOR RESPONSIVENESS */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
+      margin-top: 15px;
     }
 
     article.card {
@@ -216,8 +214,20 @@
       transform: scale(1.02);
     }
 
+    article.card h3 {
+      margin: 0 0 5px;
+      font-size: 1.2rem;
+    }
+
+    article.card time {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
     article.card a {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
 
     .section-divider {
@@ -257,36 +267,107 @@
   </header>
 
   <main>
-    <section>
-      <h2><span class="section-icon">🎬</span> Upcoming Movies</h2>
+    <!-- Movies -->
+    <section id="movies" aria-labelledby="movies-heading">
+      <h2 id="movies-heading"><span class="section-icon">🎬</span> Upcoming Movies</h2>
       <div class="cards">
-        <article class="card"><p><strong>July 31, 2026:</strong> <a href="projects/spiderman-brandnewday.html">Spider-Man: Brand New Day</a></p></article>
-        <article class="card"><p><strong>Dec 18, 2026:</strong> <a href="projects/avengers doomsday.html">Avengers: Doomsday</a></p></article>
-        <article class="card"><p><strong>Dec 17, 2027:</strong> <a href="projects/avengers-secretwars.html">Avengers: Secret Wars</a></p></article>
-        <article class="card"><p><strong>TBA:</strong> <a href="projects/xmen.html">Marvel Studios X-Men</a></p></article>
-        <article class="card"><p><strong>TBA:</strong> <a href="projects/blade.html">Blade</a></p></article>
+        <article class="card">
+          <h3>Spider-Man: Brand New Day</h3>
+          <time datetime="2026-07-31">July 31, 2026</time>
+          <a href="projects/spiderman-brandnewday.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Avengers: Doomsday</h3>
+          <time datetime="2026-12-18">Dec 18, 2026</time>
+          <a href="projects/avengers doomsday.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Avengers: Secret Wars</h3>
+          <time datetime="2027-12-17">Dec 17, 2027</time>
+          <a href="projects/avengers-secretwars.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Marvel Studios X-Men</h3>
+          <time datetime="TBA">TBA</time>
+          <a href="projects/xmen.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Blade</h3>
+          <time datetime="TBA">TBA</time>
+          <a href="projects/blade.html">Learn more</a>
+        </article>
       </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section>
-      <h2><span class="section-icon">📺</span> Upcoming Disney+ Series</h2>
+    <!-- Series -->
+    <section id="series" aria-labelledby="series-heading">
+      <h2 id="series-heading"><span class="section-icon">📺</span> Upcoming Disney+ Series</h2>
       <div class="cards">
-        <article class="card"><p><strong>Dec 2025:</strong> <a href="projects/wonderman.html">Wonder Man</a></p></article>
-        <article class="card"><p><strong>2025:</strong> <a href="projects/daredevil-bornagain2.html">Daredevil: Born Again</a></p></article>
-        <article class="card"><p><strong>2026:</strong> <a href="projects/vision-quest.html">Vision Quest</a></p></article>
+        <article class="card">
+          <h3>Wonder Man</h3>
+          <time datetime="2025-12">Dec 2025</time>
+          <a href="projects/wonderman.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Daredevil: Born Again</h3>
+          <time datetime="2025">2025</time>
+          <a href="projects/daredevil-bornagain2.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Vision Quest</h3>
+          <time datetime="2026">2026</time>
+          <a href="projects/vision-quest.html">Learn more</a>
+        </article>
       </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section>
-      <h2><span class="section-icon">🎨</span> Upcoming Animated Projects</h2>
+    <!-- Animated -->
+    <section id="animated" aria-labelledby="animated-heading">
+      <h2 id="animated-heading"><span class="section-icon">🎨</span> Upcoming Animated Projects</h2>
       <div class="cards">
-        <article class="card"><p><strong>Sept 24, 2025:</strong> <a href="projects/marvel-zombies.html">Marvel Zombies (Animated Series)</a></p></article>
-        <article class="card"><p><strong>2026:</strong> <a href="projects/friendlyspider-man-s2.html">Your Friendly Neighborhood Spider-Man — Season 2</a></p></article>
-        <article class="card"><p><strong>2026:</strong> <a href="projects/xmen97-s2.html">X-Men ’97 — Season 2</a></p></article>
+        <article class="card">
+          <h3>Marvel Zombies (Animated Series)</h3>
+          <time datetime="2025-09-24">Sept 24, 2025</time>
+          <a href="projects/marvel-zombies.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Your Friendly Neighborhood Spider-Man — Season 2</h3>
+          <time datetime="2026">2026</time>
+          <a href="projects/friendlyspider-man-s2.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>X-Men ’97 — Season 2</h3>
+          <time datetime="2026">2026</time>
+          <a href="projects/xmen97-s2.html">Learn more</a>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Games -->
+    <section id="games" aria-labelledby="games-heading">
+      <h2 id="games-heading"><span class="section-icon">🎮</span> Upcoming Games</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Marvel 1943: Rise of Hydra</h3>
+          <time datetime="2025">2025</time>
+          <a href="projects/marvel-1943.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Marvel's Wolverine</h3>
+          <time datetime="TBA">TBA</time>
+          <a href="projects/wolverine.html">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Marvel's Spider-Man 3</h3>
+          <time datetime="TBA">TBA</time>
+          <a href="projects/spiderman3.html">Learn more</a>
+        </article>
       </div>
     </section>
   </main>
