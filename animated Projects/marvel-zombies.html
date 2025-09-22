@@ -23,48 +23,43 @@
     }
     .meta { color: #bbb; margin-top: 10px; font-size: 1rem; }
 
-    /* Countdown styling */
+    /* Countdown styling - medium size, always visible */
     #countdown {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 10px;
       margin-top: 15px;
       flex-wrap: wrap;
     }
     .time-box {
       background: #1a1a1a;
-      padding: 15px 20px;
-      border-radius: 8px;
+      padding: 10px 14px;  
+      border-radius: 6px;
       border: 2px solid #ff5252;
       text-align: center;
-      min-width: 70px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .time-box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255,82,82,0.7);
+      min-width: 60px;    
     }
     .time-box .number {
-      font-size: 1.8rem;
+      font-size: 1.4rem;  
       font-weight: 700;
       color: #ff5252;
     }
     .time-box .label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #bbb;
-      margin-top: 5px;
+      margin-top: 3px;
       display: block;
     }
 
-    /* Pulse animation for "Now in Theaters!" */
+    /* Pulse animation for "Now Streaming on Disney+" */
     @keyframes pulse {
-      0%, 100% { transform: scale(1); text-shadow: 0 0 5px #00ff00; }
-      50% { transform: scale(1.1); text-shadow: 0 0 15px #00ff00; }
+      0%, 100% { transform: scale(1); text-shadow: 0 0 5px #00a3e0; }
+      50% { transform: scale(1.05); text-shadow: 0 0 12px #00a3e0; }
     }
     .pulse {
       animation: pulse 1s infinite;
-      color: #00ff00 !important;
-      font-size: 2rem;
+      color: #00a3e0 !important;
+      font-size: 1.6rem;
       font-weight: 800;
     }
 
@@ -200,7 +195,7 @@
       }
     }
 
-    // Cinematic countdown with pulse effect
+    // Countdown with Disney+ streaming message
     const releaseDate = new Date("September 24, 2025 00:00:00").getTime();
     const countdownEl = document.getElementById("countdown");
 
@@ -209,7 +204,7 @@
       const distance = releaseDate - now;
 
       if (distance <= 0) {
-        countdownEl.innerHTML = '<div class="time-box pulse">Now in Theaters!</div>';
+        countdownEl.innerHTML = '<div class="time-box pulse">Now Streaming on Disney+</div>';
         return;
       }
 
