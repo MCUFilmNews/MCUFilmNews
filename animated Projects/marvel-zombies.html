@@ -22,14 +22,40 @@
       text-transform: uppercase;
     }
     .meta { color: #bbb; margin-top: 10px; font-size: 1rem; }
+
+    /* Countdown styling */
     #countdown {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #ff5252;
-      text-align: center;
-      letter-spacing: 1px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
     }
+    .time-box {
+      background: #1a1a1a;
+      padding: 15px 20px;
+      border-radius: 8px;
+      border: 2px solid #ff5252;
+      text-align: center;
+      min-width: 70px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .time-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,82,82,0.7);
+    }
+    .time-box .number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff5252;
+    }
+    .time-box .label {
+      font-size: 0.85rem;
+      color: #bbb;
+      margin-top: 5px;
+      display: block;
+    }
+
     main { max-width: 900px; margin: 30px auto; }
     h2 { border-left: 4px solid #ff5252; padding-left: 10px; color: #fff; margin-top: 20px; }
     a { color: #ff5252; text-decoration: none; }
@@ -57,7 +83,6 @@
       transform: translateY(0);
       transition: all 0.5s ease;
     }
-    /* Hidden second half initially */
     .cast-list div.hidden {
       max-height: 0;
       opacity: 0;
@@ -101,7 +126,6 @@
       <li><strong>Writers:</strong> Bryan Andrews and Zeb Wells</li>
     </ul>
 
-    <!-- Animated cast reveal -->
     <div id="cast" class="cast-list">
       <div><strong>Elizabeth Olsen</strong> — <em>Scarlet Witch</em></div>
       <div><strong>Iman Vellani</strong> — <em>Ms. Marvel</em></div>
@@ -176,23 +200,5 @@
       }
     }
 
-    // Countdown timer
-    const releaseDate = new Date("September 24, 2025 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-    const countdownInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = releaseDate - now;
-      if (distance < 0) {
-        clearInterval(countdownInterval);
-        countdownEl.textContent = "Now in theaters!";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until release`;
-    }, 1000);
-  </script>
-</body>
-</html>
+    // Cinematic countdown
+    const releaseDate = new Date("September 24, 2025 00
