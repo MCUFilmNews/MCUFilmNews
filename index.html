@@ -1,28 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MCU Film News</title>
   <style>
+    /* THEME VARIABLES */
     :root {
       --primary: #ff5252;
       --bg-dark: #111;
-      --bg-card: #1c1c1c;
-      --bg-hover: #222;
+      --bg-card-dark: #1c1c1c;
+      --bg-hover-dark: #222;
       --text-light: #eee;
       --text-muted: #bbb;
       --text-subtle: #ccc;
+
+      --bg-light: #f8f8f8;
+      --bg-card-light: #fff;
+      --bg-hover-light: #f0f0f0;
+      --text-dark: #111;
+      --text-muted-dark: #555;
+      --text-subtle-dark: #666;
     }
 
+    /* Dark theme */
+    [data-theme="dark"] {
+      --bg: var(--bg-dark);
+      --bg-card: var(--bg-card-dark);
+      --bg-hover: var(--bg-hover-dark);
+      --text: var(--text-light);
+      --text-muted: var(--text-muted);
+      --text-subtle: var(--text-subtle);
+    }
+
+    /* Light theme */
+    [data-theme="light"] {
+      --bg: var(--bg-light);
+      --bg-card: var(--bg-card-light);
+      --bg-hover: var(--bg-hover-light);
+      --text: var(--text-dark);
+      --text-muted: var(--text-muted-dark);
+      --text-subtle: var(--text-subtle-dark);
+    }
+
+    /* BASE STYLES */
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
       padding: 0;
       line-height: 1.6;
       text-align: center;
+      transition: background 0.3s, color 0.3s;
     }
 
     a {
@@ -38,11 +68,12 @@
     }
 
     header {
-      padding: 50px 20px 20px;
+      padding: 40px 20px 20px;
+      position: relative;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: 3px;
       margin: 0;
@@ -51,7 +82,7 @@
 
     header p {
       margin-top: 10px;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
       color: var(--text-muted);
     }
 
@@ -87,15 +118,35 @@
       transform: scale(1.2);
     }
 
+    /* THEME TOGGLE BUTTON */
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #ff6b6b;
+    }
+
     main {
       max-width: 900px;
       margin: 0 auto 40px;
       padding: 20px;
       text-align: left;
-      background: linear-gradient(to bottom, var(--bg-dark) 0%, #1a1a1a 100%);
+      background: linear-gradient(to bottom, var(--bg) 0%, var(--bg-card) 100%);
       border-radius: 8px;
       position: relative;
       overflow: hidden;
+      transition: background 0.3s;
     }
 
     main::before {
@@ -116,8 +167,8 @@
       align-items: center;
       border-left: 4px solid var(--primary);
       padding-left: 10px;
-      color: #fff;
-      font-size: 1.5rem;
+      color: var(--text);
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
       opacity: 0;
       transform: translateX(-30px);
       animation: slideIn 0.5s forwards;
@@ -137,17 +188,23 @@
       text-align: center;
       background-color: var(--primary);
       border-radius: 50%;
-      color: var(--bg-dark);
+      color: #fff;
       font-weight: bold;
       margin-right: 8px;
       line-height: 28px;
+    }
+
+    /* CARD GRID FOR RESPONSIVENESS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
     }
 
     article.card {
       background-color: var(--bg-card);
       padding: 15px 20px;
       border-radius: 8px;
-      margin: 12px 0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       transition: transform 0.2s, background-color 0.2s;
       position: relative;
@@ -160,12 +217,12 @@
     }
 
     article.card a {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .section-divider {
-      border: 1px solid #222;
-      margin: 20px 0;
+      border: 1px solid #333;
+      margin: 30px 0;
     }
 
     footer {
@@ -173,7 +230,7 @@
       padding: 20px;
       margin-top: 50px;
       font-size: 0.9rem;
-      color: #aaa;
+      color: var(--text-muted);
       border-top: 1px solid #333;
     }
   </style>
@@ -186,6 +243,8 @@
     <p class="intro">
       Your #1 Source for Marvel News, Movies, TV Shows, Games, and Comics!
     </p>
+
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 
     <nav class="social-icons" aria-label="Social media links">
       <a href="https://x.com/MCUFilmNews" target="_blank" aria-label="Follow on Twitter/X">
@@ -200,56 +259,58 @@
   <main>
     <section>
       <h2><span class="section-icon">🎬</span> Upcoming Movies</h2>
-      <article class="card">
-        <p><strong>July 31, 2026:</strong> <a href="projects/spiderman-brandnewday.html">Spider-Man: Brand New Day</a></p>
-      </article>
-      <article class="card">
-        <p><strong>Dec 18, 2026:</strong> <a href="projects/avengers doomsday.html">Avengers: Doomsday</a></p>
-      </article>
-      <article class="card">
-        <p><strong>Dec 17, 2027:</strong> <a href="projects/avengers-secretwars.html">Avengers: Secret Wars</a></p>
-      </article>
-      <article class="card">
-        <p><strong>TBA:</strong> <a href="projects/xmen.html">Marvel Studios X-Men</a></p>
-      </article>
-      <article class="card">
-        <p><strong>TBA:</strong> <a href="projects/blade.html">Blade</a></p>
-      </article>
+      <div class="cards">
+        <article class="card"><p><strong>July 31, 2026:</strong> <a href="projects/spiderman-brandnewday.html">Spider-Man: Brand New Day</a></p></article>
+        <article class="card"><p><strong>Dec 18, 2026:</strong> <a href="projects/avengers doomsday.html">Avengers: Doomsday</a></p></article>
+        <article class="card"><p><strong>Dec 17, 2027:</strong> <a href="projects/avengers-secretwars.html">Avengers: Secret Wars</a></p></article>
+        <article class="card"><p><strong>TBA:</strong> <a href="projects/xmen.html">Marvel Studios X-Men</a></p></article>
+        <article class="card"><p><strong>TBA:</strong> <a href="projects/blade.html">Blade</a></p></article>
+      </div>
     </section>
 
     <div class="section-divider"></div>
 
     <section>
       <h2><span class="section-icon">📺</span> Upcoming Disney+ Series</h2>
-      <article class="card">
-        <p><strong>Dec 2025:</strong> <a href="projects/wonderman.html">Wonder Man</a></p>
-      </article>
-      <article class="card">
-        <p><strong>2025:</strong> <a href="projects/daredevil-bornagain2.html">Daredevil: Born Again</a></p>
-      </article>
-      <article class="card">
-        <p><strong>2026:</strong> <a href="projects/vision-quest.html">Vision Quest</a></p>
-      </article>
+      <div class="cards">
+        <article class="card"><p><strong>Dec 2025:</strong> <a href="projects/wonderman.html">Wonder Man</a></p></article>
+        <article class="card"><p><strong>2025:</strong> <a href="projects/daredevil-bornagain2.html">Daredevil: Born Again</a></p></article>
+        <article class="card"><p><strong>2026:</strong> <a href="projects/vision-quest.html">Vision Quest</a></p></article>
+      </div>
     </section>
 
     <div class="section-divider"></div>
 
     <section>
       <h2><span class="section-icon">🎨</span> Upcoming Animated Projects</h2>
-      <article class="card">
-        <p><strong>Sept 24, 2025:</strong> <a href="projects/marvel-zombies.html">Marvel Zombies (Animated Series)</a></p>
-      </article>
-      <article class="card">
-        <p><strong>2026:</strong> <a href="projects/friendlyspider-man-s2.html">Your Friendly Neighborhood Spider-Man — Season 2</a></p>
-      </article>
-      <article class="card">
-        <p><strong>2026:</strong> <a href="projects/xmen97-s2.html">X-Men ’97 — Season 2</a></p>
-      </article>
+      <div class="cards">
+        <article class="card"><p><strong>Sept 24, 2025:</strong> <a href="projects/marvel-zombies.html">Marvel Zombies (Animated Series)</a></p></article>
+        <article class="card"><p><strong>2026:</strong> <a href="projects/friendlyspider-man-s2.html">Your Friendly Neighborhood Spider-Man — Season 2</a></p></article>
+        <article class="card"><p><strong>2026:</strong> <a href="projects/xmen97-s2.html">X-Men ’97 — Season 2</a></p></article>
+      </div>
     </section>
   </main>
 
   <footer>
     <p>© 2025 MCUFilmNews | Fan-made site, not affiliated with Marvel Studios</p>
   </footer>
+
+  <script>
+    // Apply saved theme on load
+    (function() {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+    })();
+
+    // Toggle theme and save
+    function toggleTheme() {
+      const html = document.documentElement;
+      const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+  </script>
 </body>
 </html>
