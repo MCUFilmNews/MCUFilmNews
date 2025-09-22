@@ -23,7 +23,6 @@
     }
     .meta { color: #bbb; margin-top: 10px; font-size: 1rem; }
 
-    /* Countdown styling */
     #countdown {
       display: flex;
       justify-content: center;
@@ -69,7 +68,6 @@
     footer { text-align: center; color: #888; margin-top: 40px; border-top: 1px solid #222; padding-top: 15px; }
     .watermark { position: fixed; bottom: 10px; right: 10px; font-size: 0.8rem; color: #444; }
 
-    /* Cast grid */
     .cast-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -131,31 +129,28 @@
     </ul>
 
     <div id="cast" class="cast-list">
-      <div><strong>Elizabeth Olsen</strong> — <em>Scarlet Witch</em></div>
-      <div><strong>Iman Vellani</strong> — <em>Ms. Marvel</em></div>
-      <div><strong>David Harbour</strong> — <em>Red Guardian</em></div>
-      <div><strong>Simu Liu</strong> — <em>Shang-Chi</em></div>
-      <div><strong>Awkwafina</strong> — <em>Katy Chen</em></div>
-      <div><strong>Todd Williams</strong> — <em>Blade Knight</em></div>
-      <div><strong>Kerry Condon</strong> — <em>F.R.I.D.A.Y.</em></div>
-      <div><strong>Kenna J. Ramsey</strong> — <em>Zombie Okoye</em></div>
-      <div><strong>Kari Wahlgren</strong> — <em>Melina Vostokoff</em></div>
-      <div><strong>Dominique Thorne</strong> — <em>Ironheart</em></div>
-      <div><strong>Hailee Steinfeld</strong> — <em>Kate Bishop</em></div>
-      <div><strong>Florence Pugh</strong> — <em>Yelena Belova</em></div>
-      <div><strong>Randall Park</strong> — <em>Jimmy Woo</em></div>
-      <div><strong>Feodor Chin</strong> — <em>Wenwu</em></div>
-      <div><strong>Wyatt Russell</strong> — <em>U.S. Agent</em></div>
-      <div><strong>Rama Vallury</strong> — <em>Baron Zemo</em></div>
-      <div><strong>Hudson Thames</strong> — <em>Spider-Man</em></div>
-      <div><strong>Paul Rudd</strong> — <em>Ant-Man</em></div>
-      <div><strong>Greg Furman</strong> — <em>Thor</em></div>
-      <div><strong>Adam Hugill</strong> — <em>Rintrah</em></div>
-      <div><strong>Daniel Swain</strong> — <em>London Master</em></div>
-      <div><strong>Sheila Atim</strong> — <em>Sara</em></div>
-      <div><strong>Tessa Thompson</strong> — <em>Valkyrie</em></div>
-      <div><strong>F. Murray Abraham</strong> — <em>Khonshu</em></div>
-      <div><strong>Zenobia Shroff</strong> — <em>Muneeba Khan</em></div>
+      <div><strong>Cal Dodd</strong> — <em>Wolverine</em></div>
+      <div><strong>Lenore Zann</strong> — <em>Rogue</em></div>
+      <div><strong>George Buza</strong> — <em>Beast</em></div>
+      <div><strong>Alison Sealy-Smith</strong> — <em>Storm</em></div>
+      <div><strong>Jennifer Hale</strong> — <em>Jean Grey</em></div>
+      <div><strong>Ray Chase</strong> — <em>Cyclops</em></div>
+      <div><strong>JP Karliak</strong> — <em>Morph</em></div>
+      <div><strong>A.J. LoCascio</strong> — <em>Gambit</em></div>
+      <div><strong>Matthew Waterson</strong> — <em>Magneto</em></div>
+      <div><strong>Adrian Hough</strong> — <em>Nightcrawler</em></div>
+      <div><strong>Isaac Robinson-Smith</strong> — <em>Bishop</em></div>
+      <div><strong>Holly Chou</strong> — <em>Jubilee</em></div>
+      <div><strong>Christopher Britton</strong> — <em>Mister Sinister</em></div>
+      <div><strong>Catherine Disher</strong> — <em>Dr. Valerie Cooper</em></div>
+      <div><strong>Chris Potter</strong> — <em>Cable</em></div>
+      <div><strong>Alyson Court</strong> — <em>Abscissa</em></div>
+      <div><strong>Lawrence Bayne</strong> — <em>X-Cutioner</em></div>
+      <div><strong>Ron Rubin</strong> — <em>President Robert Kelly</em></div>
+      <div><strong>Gates McFadden</strong> — <em>Mother Askani</em></div>
+      <div><strong>Gil Birmingham</strong> — <em>Forge</em></div>
+      <div><strong>Eric Bauza</strong> — <em>Sentinels</em></div>
+      <div><strong>Ross Marquand</strong> — <em>Professor Xavier</em></div>
     </div>
     <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
 
@@ -201,34 +196,17 @@
       }
     }
 
-    // Countdown with Disney+ streaming message
-    const releaseDate = new Date("").getTime();
+    // Countdown showing always 0 0 0 0
     const countdownEl = document.getElementById("countdown");
-
     function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = releaseDate - now;
-
-      if (distance <= 0) {
-        countdownEl.innerHTML = '<div class="time-box pulse">Now Streaming on Disney+</div>';
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       countdownEl.innerHTML =
-        `<div class="time-box"><span class="number">${days}</span><span class="label">Days</span></div>` +
-        `<div class="time-box"><span class="number">${hours}</span><span class="label">Hours</span></div>` +
-        `<div class="time-box"><span class="number">${minutes}</span><span class="label">Minutes</span></div>` +
-        `<div class="time-box"><span class="number">${seconds}</span><span class="label">Seconds</span></div>`;
+        `<div class="time-box"><span class="number">0</span><span class="label">Days</span></div>` +
+        `<div class="time-box"><span class="number">0</span><span class="label">Hours</span></div>` +
+        `<div class="time-box"><span class="number">0</span><span class="label">Minutes</span></div>` +
+        `<div class="time-box"><span class="number">0</span><span class="label">Seconds</span></div>`;
     }
-
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
-
