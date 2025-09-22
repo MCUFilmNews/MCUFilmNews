@@ -225,7 +225,6 @@ function toggleCast() {
   isVisible = !isVisible;
 
   if (isVisible) {
-    // Show second half with stagger
     for (let i = half; i < castDivs.length; i++) {
       setTimeout(() => {
         castDivs[i].classList.remove("hidden");
@@ -233,7 +232,6 @@ function toggleCast() {
     }
     btn.textContent = "Hide Cast";
   } else {
-    // Hide second half smoothly in reverse order
     for (let i = half; i < castDivs.length; i++) {
       setTimeout(() => {
         castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden");
@@ -242,7 +240,30 @@ function toggleCast() {
     btn.textContent = "Show Full Cast";
   }
 }
+
+// Countdown script
+const countdownEl = document.getElementById("countdown");
+const releaseDate = new Date("2026-12-18T00:00:00").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = releaseDate - now;
+
+  if (distance < 0) {
+    countdownEl.innerHTML = "Released!";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownEl.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 </body>
 </html>
-
