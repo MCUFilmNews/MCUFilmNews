@@ -23,23 +23,24 @@
     }
     .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
 
-    /* Marvel Zombies-style countdown card */
+    /* Marvel Zombies-style countdown box */
     #countdown-card {
-      margin: 15px auto 0;
+      margin: 20px auto;
       background: #1a1a1a;
-      border: 2px solid #ff5252;
+      border: 3px solid #ff5252;
       border-radius: 15px;
-      padding: 15px 25px;
+      padding: 20px 40px;
       display: inline-block;
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: 800;
       color: #ff5252;
-      box-shadow: 0 4px 15px rgba(255,82,82,0.4);
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(255,82,82,0.4);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     #countdown-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 20px rgba(255,82,82,0.6);
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(255,82,82,0.6);
     }
 
     main { max-width:900px; margin:30px auto; }
@@ -216,7 +217,7 @@ function toggleCast() {
   }
 }
 
-// Countdown script exactly like Marvel Zombies
+// Marvel Zombies-style countdown
 const countdownElement = document.getElementById("countdown-card");
 const releaseDate = new Date("December 18, 2026 00:00:00").getTime();
 
