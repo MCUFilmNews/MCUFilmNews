@@ -56,6 +56,18 @@
       display: block;
     }
 
+    /* Pulse animation for "Now in Theaters!" */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 5px #00ff00; }
+      50% { transform: scale(1.1); text-shadow: 0 0 15px #00ff00; }
+    }
+    .pulse {
+      animation: pulse 1s infinite;
+      color: #00ff00 !important;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
     main { max-width: 900px; margin: 30px auto; }
     h2 { border-left: 4px solid #ff5252; padding-left: 10px; color: #fff; margin-top: 20px; }
     a { color: #ff5252; text-decoration: none; }
@@ -169,36 +181,52 @@
     // Cast animation
     const castDivs = document.querySelectorAll("#cast div");
     const half = Math.ceil(castDivs.length / 2);
-
-    for (let i = half; i < castDivs.length; i++) {
-      castDivs[i].classList.add("hidden");
-    }
-
+    for (let i = half; i < castDivs.length; i++) castDivs[i].classList.add("hidden");
     for (let i = 0; i < half; i++) {
       castDivs[i].style.opacity = 0;
       castDivs[i].style.transform = 'translateY(20px)';
-      setTimeout(() => {
-        castDivs[i].style.opacity = 1;
-        castDivs[i].style.transform = 'translateY(0)';
-      }, i * 100);
+      setTimeout(() => { castDivs[i].style.opacity = 1; castDivs[i].style.transform = 'translateY(0)'; }, i * 100);
     }
-
     let isVisible = false;
     function toggleCast() {
       const btn = document.querySelector(".toggle-btn");
       isVisible = !isVisible;
       if (isVisible) {
-        for (let i = half; i < castDivs.length; i++) {
-          setTimeout(() => { castDivs[i].classList.remove("hidden"); }, (i - half) * 50);
-        }
+        for (let i = half; i < castDivs.length; i++) setTimeout(() => { castDivs[i].classList.remove("hidden"); }, (i - half) * 50);
         btn.textContent = "Hide Cast";
       } else {
-        for (let i = half; i < castDivs.length; i++) {
-          setTimeout(() => { castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden"); }, (i - half) * 50);
-        }
+        for (let i = half; i < castDivs.length; i++) setTimeout(() => { castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden"); }, (i - half) * 50);
         btn.textContent = "Show Full Cast";
       }
     }
 
-    // Cinematic countdown
-    const releaseDate = new Date("September 24, 2025 00
+    // Cinematic countdown with pulse effect
+    const releaseDate = new Date("September 24, 2025 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = releaseDate - now;
+
+      if (distance <= 0) {
+        countdownEl.innerHTML = '<div class="time-box pulse">Now in Theaters!</div>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML =
+        `<div class="time-box"><span class="number">${days}</span><span class="label">Days</span></div>` +
+        `<div class="time-box"><span class="number">${hours}</span><span class="label">Hours</span></div>` +
+        `<div class="time-box"><span class="number">${minutes}</span><span class="label">Minutes</span></div>` +
+        `<div class="time-box"><span class="number">${seconds}</span><span class="label">Seconds</span></div>`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
