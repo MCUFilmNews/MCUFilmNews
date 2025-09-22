@@ -22,6 +22,14 @@
       text-transform: uppercase;
     }
     .meta { color: #bbb; margin-top: 10px; font-size: 1rem; }
+    #countdown {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5252;
+      text-align: center;
+      letter-spacing: 1px;
+    }
     main { max-width: 900px; margin: 30px auto; }
     h2 { border-left: 4px solid #ff5252; padding-left: 10px; color: #fff; margin-top: 20px; }
     a { color: #ff5252; text-decoration: none; }
@@ -81,6 +89,7 @@
   <header>
     <h1>Marvel Zombies</h1>
     <div class="meta">Release Date: September 24, 2025</div>
+    <div id="countdown"></div>
   </header>
   <main>
     <h2>Synopsis</h2>
@@ -133,15 +142,14 @@
   <div class="watermark">MCU FILM NEWS</div>
 
   <script>
+    // Cast animation
     const castDivs = document.querySelectorAll("#cast div");
     const half = Math.ceil(castDivs.length / 2);
 
-    // Initially hide second half
     for (let i = half; i < castDivs.length; i++) {
       castDivs[i].classList.add("hidden");
     }
 
-    // Animate first half on page load
     for (let i = 0; i < half; i++) {
       castDivs[i].style.opacity = 0;
       castDivs[i].style.transform = 'translateY(20px)';
@@ -152,29 +160,39 @@
     }
 
     let isVisible = false;
-
     function toggleCast() {
       const btn = document.querySelector(".toggle-btn");
       isVisible = !isVisible;
-
       if (isVisible) {
         for (let i = half; i < castDivs.length; i++) {
-          setTimeout(() => {
-            castDivs[i].classList.remove("hidden");
-          }, (i - half) * 50);
+          setTimeout(() => { castDivs[i].classList.remove("hidden"); }, (i - half) * 50);
         }
         btn.textContent = "Hide Cast";
       } else {
         for (let i = half; i < castDivs.length; i++) {
-          setTimeout(() => {
-            castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden");
-          }, (i - half) * 50);
+          setTimeout(() => { castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden"); }, (i - half) * 50);
         }
         btn.textContent = "Show Full Cast";
       }
     }
+
+    // Countdown timer
+    const releaseDate = new Date("September 24, 2025 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    const countdownInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = releaseDate - now;
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdownEl.textContent = "Now in theaters!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until release`;
+    }, 1000);
   </script>
 </body>
 </html>
-
-
