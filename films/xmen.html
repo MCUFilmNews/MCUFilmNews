@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marvel Studios X-Men — MCU FILM NEWS</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    header { text-align:center; margin-top:20px; }
+    header h1 {
+      font-size: 3rem;         
+      font-weight: 800;
+      letter-spacing: 3px;     
+      margin: 0;
+      text-transform: uppercase; 
+    }
+    .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
+    #countdown {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5252;
+    }
+    main { max-width:900px; margin:30px auto; }
+    h2 { border-left:4px solid #ff5252; padding-left:10px; color:#fff; margin-top:20px; }
+    a { color:#ff5252; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .back { margin-top:30px; display:block; }
+    footer { text-align:center; color:#888; margin-top:40px; border-top:1px solid #222; padding-top:15px; }
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: #444;
+    }
+
+    /* cast grid */
+    .cast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 20px;
+      margin-top: 10px;
+      padding-left: 0;
+      overflow: hidden;
+      max-height: 250px;
+      transition: max-height 0.6s ease;
+    }
+    .cast-list.expanded { max-height: 2000px; }
+    .cast-list div {
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid #ff5252;
+    }
+    .cast-list strong { color: #fff; }
+    .cast-list em { color: #bbb; }
+    .toggle-btn {
+      margin-top: 10px;
+      background: #ff5252;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .toggle-btn:hover { background: #e04444; }
+
+    /* scrollable Twitter feed for multiple tweets */
+    .twitter-container {
+      max-height: 600px;
+      overflow-y: auto;
+      border: 2px solid #222;
+      border-radius: 8px;
+      padding: 5px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Marvel Studios X-Men</h1>
+    <div class="meta">Release Date: TBA</div>
+    <div id="countdown"></div>
+  </header>
+
+  <main>
+    <h2>Synopsis</h2>
+    <p>TBA</p>
+    
+    <h2>Cast & Crew</h2>
+    <ul>
+      <li><strong>Director:</strong> Jake Schreier</li>
+      <li><strong>Writers:</strong> Michael Lesslie</li>
+      <li><strong>Cast:</strong> TBA</li>
+    </ul>
+    <h2>Latest News</h2>
+<div style="display: flex; flex-direction: column; gap: 15px;">
+
+  <!-- Card 1 -->
+  <a href="https://x.com/MCUFilmNews/status/1960366360086921568" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/GzSetneaYAAKvrg?format=jpg&name=large" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">Jake Schreier confirmed that work has started on the upcoming ‘X-MEN’ movie.</strong>
+        <p style="margin:5px 0 0; color:#ccc;"></p>
+      </div>
+    </div>
+  </a>
+
+  <!-- Card 2 -->
+  <a href="https://x.com/MCUFilmNews/status/1950605859022889011" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/GxHxj72bYAEkguz?format=jpg&name=large" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">The 'X-MEN' reboot film is set to begin casting soon.</strong>
+        <p style="margin:5px 0 0; color:#ccc;"></p>
+      </div>
+    </div>
+  </a>
+  <!-- Card 3 -->
+  <a href="https://x.com/MCUFilmNews/status/1950605184520069557" target="_blank" style="text-decoration: none;">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px solid #ff5252;
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+      onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+    >
+      <img src="https://pbs.twimg.com/media/GxHwMroaIAcvAon?format=jpg&name=4096x4096" 
+           alt="Avengers Doomsday" 
+           style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
+      <div style="color:#eee;">
+        <strong style="font-size:1.1rem;">Marvel Studios is reportedly looking for younger, lesser-known actors for the upcoming 'X-MEN' reboot film.</strong>
+        <p style="margin:5px 0 0; color:#ccc;">The aim is to keep costs down.</p>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+
+<!-- Back link added at the very bottom of the main section -->
+<a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
+</main>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+
+  // Toggle cast list
+  function toggleCast() {
+    const castList = document.getElementById("cast");
+    const btn = document.querySelector(".toggle-btn");
+
+    if (castList.classList.contains("expanded")) {
+      castList.classList.remove("expanded");
+      btn.textContent = "Show Full Cast";
+    } else {
+      castList.classList.add("expanded");
+      btn.textContent = "Hide Cast";
+    }
+  }
+</script>
+</body>
+</html>
