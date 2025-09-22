@@ -22,12 +22,45 @@
       text-transform: uppercase; 
     }
     .meta { color:#bbb; margin-top:10px; font-size: 1rem; }
+
+    /* Marvel Zombies-style countdown */
     #countdown {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    .time-box {
+      background: #1a1a1a;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 2px solid #ff5252;
+      text-align: center;
+      min-width: 60px;
+    }
+    .time-box .number {
+      font-size: 1.4rem;
+      font-weight: 700;
       color: #ff5252;
     }
+    .time-box .label {
+      font-size: 0.8rem;
+      color: #bbb;
+      margin-top: 3px;
+      display: block;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 5px #00a3e0; }
+      50% { transform: scale(1.05); text-shadow: 0 0 12px #00a3e0; }
+    }
+    .pulse {
+      animation: pulse 1s infinite;
+      color: #00a3e0 !important;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
     main { max-width:900px; margin:30px auto; }
     h2 { border-left:4px solid #ff5252; padding-left:10px; color:#fff; margin-top:20px; }
     a { color:#ff5252; text-decoration:none; }
@@ -131,76 +164,29 @@
 
     <h2>Latest News</h2>
     <div style="display: flex; flex-direction: column; gap: 15px;">
-            <!-- News Cards 1 -->
+      <!-- News Cards -->
       <a href="https://x.com/MCUFilmNews/status/1969483792105816339" target="_blank" style="text-decoration: none;">
-        <div style="
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          background: #1a1a1a;
-          padding: 15px;
-          border-radius: 15px;
-          border: 2px solid #ff5252;
-          transition: transform 0.2s, box-shadow 0.2s;
-        "
-          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
-        >
-          <img src="https://pbs.twimg.com/media/G1UC-BmaYAA-XI8?format=jpg&name=small" 
-               alt="Avengers Doomsday" 
-               style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-          <div style="color:#eee;">
-            <strong style="font-size:1.1rem;">Filming for ‘SPIDER-MAN: BRAND NEW DAY’ is currently underway in Basingstoke.</strong>
-            <p style="margin:5px 0 0; color:#ccc;"></p>
-          </div>
+        <div style="display:flex;align-items:center;gap:15px;background:#1a1a1a;padding:15px;border-radius:15px;border:2px solid #ff5252;transition:transform 0.2s,box-shadow 0.2s;"
+             onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+             onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';">
+          <img src="https://pbs.twimg.com/media/G1UC-BmaYAA-XI8?format=jpg&name=small" style="width:80px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0;" alt="Spider-Man Filming">
+          <div style="color:#eee;"><strong style="font-size:1.1rem;">Filming for ‘SPIDER-MAN: BRAND NEW DAY’ is currently underway in Basingstoke.</strong></div>
         </div>
       </a>
-       <!-- News Cards 2 -->
       <a href="https://x.com/MCUFilmNews/status/1969471292467527744" target="_blank" style="text-decoration: none;">
-        <div style="
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          background: #1a1a1a;
-          padding: 15px;
-          border-radius: 15px;
-          border: 2px solid #ff5252;
-          transition: transform 0.2s, box-shadow 0.2s;
-        "
-          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
-        >
-          <img src="https://pbs.twimg.com/media/G1T3snwbQAA7Uft?format=jpg&name=large" 
-               alt="Avengers Doomsday" 
-               style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-          <div style="color:#eee;">
-            <strong style="font-size:1.1rem;">Tom Holland calls ‘SPIDER-MAN: BRAND NEW DAY’ a fresh start for the character.</strong>
-            <p style="margin:5px 0 0; color:#ccc;">Click here to read the full quote</p>
-          </div>
+        <div style="display:flex;align-items:center;gap:15px;background:#1a1a1a;padding:15px;border-radius:15px;border:2px solid #ff5252;transition:transform 0.2s,box-shadow 0.2s;"
+             onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+             onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';">
+          <img src="https://pbs.twimg.com/media/G1T3snwbQAA7Uft?format=jpg&name=large" style="width:80px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0;" alt="Tom Holland">
+          <div style="color:#eee;"><strong style="font-size:1.1rem;">Tom Holland calls ‘SPIDER-MAN: BRAND NEW DAY’ a fresh start for the character.</strong></div>
         </div>
       </a>
-      <!-- News Cards 3 -->
       <a href="https://x.com/MCUFilmNews/status/1969470893517914529" target="_blank" style="text-decoration: none;">
-        <div style="
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          background: #1a1a1a;
-          padding: 15px;
-          border-radius: 15px;
-          border: 2px solid #ff5252;
-          transition: transform 0.2s, box-shadow 0.2s;
-        "
-          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
-          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
-        >
-          <img src="https://pbs.twimg.com/media/G1T3VONbQAEzCfv?format=jpg&name=medium" 
-               alt="Avengers Doomsday" 
-               style="width:80px; height:80px; object-fit:cover; border-radius:8px; flex-shrink:0;">
-          <div style="color:#eee;">
-            <strong style="font-size:1.1rem;">Tom Holland reveals that his new Spider-Man suit takes ideas from the versions worn by Tobey Maguire and Andrew Garfield.</strong>
-            <p style="margin:5px 0 0; color:#ccc;">Click here to read the full quote</p>
-          </div>
+        <div style="display:flex;align-items:center;gap:15px;background:#1a1a1a;padding:15px;border-radius:15px;border:2px solid #ff5252;transition:transform 0.2s,box-shadow 0.2s;"
+             onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 4px 15px rgba(255,82,82,0.5)';"
+             onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';">
+          <img src="https://pbs.twimg.com/media/G1T3VONbQAEzCfv?format=jpg&name=medium" style="width:80px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0;" alt="Spider-Man Suit">
+          <div style="color:#eee;"><strong style="font-size:1.1rem;">Tom Holland reveals that his new Spider-Man suit takes ideas from the versions worn by Tobey Maguire and Andrew Garfield.</strong></div>
         </div>
       </a>
     </div>
@@ -208,28 +194,43 @@
     <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
   </main>
 
+  <footer>
+    <p>© 2025 Fan-made site, not affiliated with Marvel Studios</p>
+  </footer>
+  <div class="watermark">MCU FILM NEWS</div>
+
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script>
-    // Countdown
+    // === Marvel Zombies-style countdown ===
     const releaseDate = new Date("July 31, 2026 00:00:00").getTime();
     const countdownEl = document.getElementById("countdown");
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = releaseDate - now;
-      if (distance < 0) { countdownEl.innerHTML = "Now in theaters!"; return; }
+
+      if (distance <= 0) {
+        countdownEl.innerHTML = '<div class="time-box pulse">Now Playing in Theaters</div>';
+        return;
+      }
+
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
 
-    // === DOOMSDAY STYLE CAST TOGGLE ===
+      countdownEl.innerHTML =
+        `<div class="time-box"><span class="number">${days}</span><span class="label">Days</span></div>` +
+        `<div class="time-box"><span class="number">${hours}</span><span class="label">Hours</span></div>` +
+        `<div class="time-box"><span class="number">${minutes}</span><span class="label">Minutes</span></div>` +
+        `<div class="time-box"><span class="number">${seconds}</span><span class="label">Seconds</span></div>`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // === Doomsday-style cast toggle ===
     const castList = document.getElementById("cast");
     const castItems = castList.querySelectorAll("div");
-    const btn = document.querySelector(".toggle-btn");
+    const toggleBtn = document.querySelector(".toggle-btn");
 
     // Hide beyond first 6 initially
     castItems.forEach((div, index) => { if (index >= 6) div.classList.add("hidden"); });
@@ -246,25 +247,19 @@
 
     function toggleCast() {
       if (castList.classList.contains("expanded")) {
-        // Collapse back to 6 with stagger (reverse)
         for (let i = castItems.length - 1; i >= 6; i--) {
           setTimeout(() => { castItems[i].classList.add("hidden"); }, (castItems.length - 1 - i) * 50);
         }
         castList.classList.remove("expanded");
-        btn.textContent = "Show Full Cast";
+        toggleBtn.textContent = "Show Full Cast";
       } else {
-        // Expand with stagger
         castList.classList.add("expanded");
         for (let i = 6; i < castItems.length; i++) {
           setTimeout(() => { castItems[i].classList.remove("hidden"); }, (i - 6) * 50);
         }
-        btn.textContent = "Hide Cast";
+        toggleBtn.textContent = "Hide Cast";
       }
     }
   </script>
 </body>
 </html>
-
-
-
-
