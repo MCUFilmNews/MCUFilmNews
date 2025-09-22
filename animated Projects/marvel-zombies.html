@@ -5,17 +5,76 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Marvel Zombies — MCU FILM NEWS</title>
   <style>
-    body {font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#111;color:#eee;margin:0;padding:20px;line-height:1.6;}
-    header{text-align:center;margin-top:20px;}
-    header h1{font-size:3rem;font-weight:800;letter-spacing:3px;margin:0;text-transform:uppercase;}
-    .meta{color:#bbb;margin-top:10px;font-size:1rem;}
-    main{max-width:900px;margin:30px auto;}
-    h2{border-left:4px solid #ff5252;padding-left:10px;color:#fff;margin-top:20px;}
-    a{color:#ff5252;text-decoration:none;}
-    a:hover{text-decoration:underline;}
-    .back{margin-top:30px;display:block;}
-    footer{text-align:center;color:#888;margin-top:40px;border-top:1px solid #222;padding-top:15px;}
-    .watermark{position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#444;}
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    header { text-align: center; margin-top: 20px; }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .meta { color: #bbb; margin-top: 10px; font-size: 1rem; }
+    main { max-width: 900px; margin: 30px auto; }
+    h2 { border-left: 4px solid #ff5252; padding-left: 10px; color: #fff; margin-top: 20px; }
+    a { color: #ff5252; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back { margin-top: 30px; display: block; }
+    footer { text-align: center; color: #888; margin-top: 40px; border-top: 1px solid #222; padding-top: 15px; }
+    .watermark { position: fixed; bottom: 10px; right: 10px; font-size: 0.8rem; color: #444; }
+
+    /* Cast grid */
+    .cast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 20px;
+      margin-top: 10px;
+      padding-left: 0;
+    }
+    .cast-list div {
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid #ff5252;
+      overflow: hidden;
+      margin-bottom: 5px;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s ease;
+    }
+    /* Hidden second half initially */
+    .cast-list div.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0;
+      transform: translateY(-20px);
+      transition: all 0.5s ease;
+    }
+    .cast-list strong { color: #fff; }
+    .cast-list em { color: #bbb; }
+
+    .toggle-btn {
+      margin-top: 10px;
+      background: #ff5252;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .toggle-btn:hover { background: #e04444; }
   </style>
 </head>
 <body>
@@ -25,24 +84,95 @@
   </header>
   <main>
     <h2>Synopsis</h2>
-    <p><em>The series follows a new group of survivors, including the likes of Spider-Man, Blade, and Kamala Khan, as they search for a cure to the zombie plague, traveling across a dystopian landscape and fighting super-powered zombies.</em></p>
+    <p><em>The series follows a new group of survivors, including Spider-Man, Blade, and Kamala Khan, as they search for a cure to the zombie plague, traveling across a dystopian landscape and fighting super-powered zombies.</em></p>
+
     <h2>Cast & Crew</h2>
     <ul>
-      <li>Director: Bryan Andrews.</li>
-      <li>Writers: Bryan Andrews and Zeb Wells</li>
-      <li>Voice Cast: TBD</li>
+      <li><strong>Director:</strong> Bryan Andrews</li>
+      <li><strong>Writers:</strong> Bryan Andrews and Zeb Wells</li>
     </ul>
+
+    <!-- Animated cast reveal -->
+    <div id="cast" class="cast-list">
+      <div><strong>Elizabeth Olsen</strong> — <em>Wanda Maximoff / Scarlet Witch (Red Queen)</em></div>
+      <div><strong>Iman Vellani</strong> — <em>Kamala Khan / Ms. Marvel</em></div>
+      <div><strong>David Harbour</strong> — <em>Alexei Shostakov / Red Guardian</em></div>
+      <div><strong>Simu Liu</strong> — <em>Shang-Chi</em></div>
+      <div><strong>Awkwafina</strong> — <em>Katy Chen</em></div>
+      <div><strong>Todd Williams</strong> — <em>Blade Knight</em></div>
+      <div><strong>Kerry Condon</strong> — <em>F.R.I.D.A.Y.</em></div>
+      <div><strong>Kenna J. Ramsey</strong> — <em>Zombie Okoye</em></div>
+      <div><strong>Kari Wahlgren</strong> — <em>Melina Vostokoff</em></div>
+      <div><strong>Dominique Thorne</strong> — <em>Riri Williams / Ironheart</em></div>
+      <div><strong>Hailee Steinfeld</strong> — <em>Kate Bishop</em></div>
+      <div><strong>Florence Pugh</strong> — <em>Yelena Belova</em></div>
+      <div><strong>Randall Park</strong> — <em>Jimmy Woo</em></div>
+      <div><strong>Feodor Chin</strong> — <em>Wenwu</em></div>
+      <div><strong>Wyatt Russell</strong> — <em>John Walker / U.S. Agent</em></div>
+      <div><strong>Rama Vallury</strong> — <em>Baron Zemo</em></div>
+      <div><strong>Hudson Thames</strong> — <em>Peter Parker / Spider-Man</em></div>
+      <div><strong>Paul Rudd</strong> — <em>Scott Lang / Ant-Man</em></div>
+      <div><strong>Greg Furman</strong> — <em>Thor</em></div>
+      <div><strong>Adam Hugill</strong> — <em>Rintrah</em></div>
+      <div><strong>Daniel Swain</strong> — <em>London Master</em></div>
+      <div><strong>Sheila Atim</strong> — <em>Sara</em></div>
+      <div><strong>Tessa Thompson</strong> — <em>Valkyrie</em></div>
+      <div><strong>F. Murray Abraham</strong> — <em>Khonshu</em></div>
+      <div><strong>Zenobia Shroff</strong> — <em>Muneeba Khan</em></div>
+    </div>
+    <button class="toggle-btn" onclick="toggleCast()">Show Full Cast</button>
+
     <h2>Latest News</h2>
-    <p></p>
-<a href="../index.html">⬅ Back to MCU FILM NEWS</a>
+    <p>No official news yet. Stay tuned for updates.</p>
+
+    <a href="../index.html" class="back">⬅ Back to MCU FILM NEWS</a>
   </main>
   <footer>
     <p>© 2025 Fan-made site, not affiliated with Marvel Studios</p>
   </footer>
   <div class="watermark">MCU FILM NEWS</div>
+
+  <script>
+    const castDivs = document.querySelectorAll("#cast div");
+    const half = Math.ceil(castDivs.length / 2);
+
+    // Initially hide second half
+    for (let i = half; i < castDivs.length; i++) {
+      castDivs[i].classList.add("hidden");
+    }
+
+    // Animate first half on page load
+    for (let i = 0; i < half; i++) {
+      castDivs[i].style.opacity = 0;
+      castDivs[i].style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        castDivs[i].style.opacity = 1;
+        castDivs[i].style.transform = 'translateY(0)';
+      }, i * 100);
+    }
+
+    let isVisible = false;
+
+    function toggleCast() {
+      const btn = document.querySelector(".toggle-btn");
+      isVisible = !isVisible;
+
+      if (isVisible) {
+        for (let i = half; i < castDivs.length; i++) {
+          setTimeout(() => {
+            castDivs[i].classList.remove("hidden");
+          }, (i - half) * 50);
+        }
+        btn.textContent = "Hide Cast";
+      } else {
+        for (let i = half; i < castDivs.length; i++) {
+          setTimeout(() => {
+            castDivs[castDivs.length - 1 - (i - half)].classList.add("hidden");
+          }, (i - half) * 50);
+        }
+        btn.textContent = "Show Full Cast";
+      }
+    }
+  </script>
 </body>
 </html>
-
-
-
-
